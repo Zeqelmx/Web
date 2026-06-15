@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Zeqel Estudio</title>
+    <title>Zeqel Estudio | Diseño GRAFICO</title>
     <link rel="icon" type="image/svg+xml" href="https://raw.githubusercontent.com/Zeqelmx/images-/d10cc36e121a6eb265bf851666c1d804aca6716c/favicon%20(1).svg">
     <style>
         /* [MODIFICADO] Se agregó 'Inter' para UI/Textos secundarios y se mantuvo 'Fraunces' para encabezados.
@@ -628,6 +628,31 @@
             position: absolute;
             top: 0;
             left: 0;
+        }
+
+        /* --- Video Hover Preview Styles --- */
+        .video-hover-container .hover-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .video-hover-container .hover-image {
+            z-index: 1;
+            transition: opacity 0.5s ease;
+        }
+
+        .video-hover-container:hover .hover-image {
+            opacity: 0;
+        }
+
+        .video-hover-container:hover .hover-video {
+            opacity: 1;
         }
 
         .card-actions {
@@ -1407,42 +1432,73 @@
         <div id="proyectos" class="page">
             <section class="content-section">
                 <h2 class="content-title">Proyectos</h2>
+                <!-- 
+                ========================================================================
+                [ZONA EDITABLE - PROYECTOS]
+                
+                CÓMO AÑADIR NUEVAS TARJETAS:
+                Copia un bloque <div class="brand-card"...> completo y pégalo al final
+                de la clase "brands-grid". Asegúrate de asignarle un 'data-project' único.
+                
+                CÓMO REACTIVAR MODALES:
+                Busca en la sección de JavaScript (al final de este archivo) el evento de
+                clic para '.brand-card' y elimina la línea: "if (true) return; // TEMPORALMENTE DESACTIVADO"
+                
+                QUÉ PARTES PUEDEN EDITARSE: 
+                - El interior de la etiqueta 'brand-name' (puedes reemplazar el texto por <img> o <svg>).
+                - El texto de la etiqueta 'brand-category'.
+                
+                QUÉ PARTES NO DEBEN MODIFICARSE:
+                - Las clases estructurales ('brands-grid', 'brand-card').
+                - El contenedor general, espaciados y sus estilos CSS asociados.
+                ========================================================================
+                -->
                 <div class="brands-grid">
                     <div class="brand-card" data-project="aura">
-                        <span class="brand-name">Aura</span>
-                        <span class="brand-category">Editorial & Design</span>
+                        <!-- DÓNDE REEMPLAZAR EL TEXTO TEMPORAL POR UN SVG O INSERTAR FUTUROS LOGOTIPOS: -->
+                        <!-- Borra el <span> inferior y coloca aquí tu código <svg> o etiqueta <img src="..."> -->
+                        <span class="brand-name">En proceso creativo</span>
+                        <span class="brand-category">Identidad visual en desarrollo</span>
                     </div>
                     <div class="brand-card" data-project="neolith">
-                        <span class="brand-name">Neolith</span>
-                        <span class="brand-category">Skincare & Clean Beauty</span>
+                        <!-- DÓNDE REEMPLAZAR EL TEXTO TEMPORAL POR UN SVG O INSERTAR FUTUROS LOGOTIPOS: -->
+                        <span class="brand-name">En proceso creativo</span>
+                        <span class="brand-category">Identidad visual en desarrollo</span>
                     </div>
                     <div class="brand-card" data-project="kinetic">
-                        <span class="brand-name">Kinetic</span>
-                        <span class="brand-category">Architecture Studio</span>
+                        <!-- DÓNDE REEMPLAZAR EL TEXTO TEMPORAL POR UN SVG O INSERTAR FUTUROS LOGOTIPOS: -->
+                        <span class="brand-name">En proceso creativo</span>
+                        <span class="brand-category">Identidad visual en desarrollo</span>
                     </div>
                     <div class="brand-card" data-project="origen">
-                        <span class="brand-name">Origen</span>
-                        <span class="brand-category">Specialty Coffee</span>
+                        <!-- DÓNDE REEMPLAZAR EL TEXTO TEMPORAL POR UN SVG O INSERTAR FUTUROS LOGOTIPOS: -->
+                        <span class="brand-name">En proceso creativo</span>
+                        <span class="brand-category">Identidad visual en desarrollo</span>
                     </div>
                     <div class="brand-card" data-project="lumina">
-                        <span class="brand-name">Lumina</span>
-                        <span class="brand-category">Curated Lighting</span>
+                        <!-- DÓNDE REEMPLAZAR EL TEXTO TEMPORAL POR UN SVG O INSERTAR FUTUROS LOGOTIPOS: -->
+                        <span class="brand-name">En proceso creativo</span>
+                        <span class="brand-category">Identidad visual en desarrollo</span>
                     </div>
                     <div class="brand-card" data-project="nomad">
-                        <span class="brand-name">Nomad</span>
-                        <span class="brand-category">Slow Travel Gear</span>
+                        <!-- DÓNDE REEMPLAZAR EL TEXTO TEMPORAL POR UN SVG O INSERTAR FUTUROS LOGOTIPOS: -->
+                        <span class="brand-name">En proceso creativo</span>
+                        <span class="brand-category">Identidad visual en desarrollo</span>
                     </div>
                     <div class="brand-card" data-project="vibe">
-                        <span class="brand-name">Vibe</span>
-                        <span class="brand-category">Sonic Art Agency</span>
+                        <!-- DÓNDE REEMPLAZAR EL TEXTO TEMPORAL POR UN SVG O INSERTAR FUTUROS LOGOTIPOS: -->
+                        <span class="brand-name">En proceso creativo</span>
+                        <span class="brand-category">Identidad visual en desarrollo</span>
                     </div>
                     <div class="brand-card" data-project="terra">
-                        <span class="brand-name">Terra</span>
-                        <span class="brand-category">Sustainable Wine</span>
+                        <!-- DÓNDE REEMPLAZAR EL TEXTO TEMPORAL POR UN SVG O INSERTAR FUTUROS LOGOTIPOS: -->
+                        <span class="brand-name">En proceso creativo</span>
+                        <span class="brand-category">Identidad visual en desarrollo</span>
                     </div>
                     <div class="brand-card" data-project="apex">
-                        <span class="brand-name">Apex</span>
-                        <span class="brand-category">Decentralized Tech</span>
+                        <!-- DÓNDE REEMPLAZAR EL TEXTO TEMPORAL POR UN SVG O INSERTAR FUTUROS LOGOTIPOS: -->
+                        <span class="brand-name">En proceso creativo</span>
+                        <span class="brand-category">Identidad visual en desarrollo</span>
                     </div>
                 </div>
 
@@ -1489,43 +1545,55 @@
             <section class="content-section">
                 <h2 class="content-title">Recursos</h2>
                 <p style="opacity: 0.8; max-width: 650px; margin-bottom: 3rem; font-size: 1.15rem;">Herramientas, mockups y assets creados en nuestro estudio, compartidos para la comunidad creativa.</p>
+                <!-- 
+                ========================================================================
+                [ZONA EDITABLE - RECURSOS]
+                
+                CÓMO AÑADIR NUEVAS TARJETAS:
+                Copia un bloque <div class="card" style="cursor: default;">...</div> 
+                completo y pégalo dentro del contenedor "grid-layout".
+                
+                CÓMO REACTIVAR ENLACES:
+                Elimina la condición "onclick='return false;'" de la etiqueta <a> dentro 
+                de "card-actions" y reemplaza el atributo href="#" por tu URL real de descarga.
+                
+                QUÉ PARTES PUEDEN EDITARSE: 
+                - Los textos de los títulos <h3> y los párrafos descriptivos <p>.
+                - La URL del botón "Descargar" en la etiqueta <a>.
+                
+                QUÉ PARTES NO DEBEN MODIFICARSE:
+                - La estructura HTML de las animaciones internas (.gif-preview, 
+                  .preview-stationery, etc.)
+                - La maquetación y jerarquía de etiquetas de la tarjeta para evitar romper el CSS.
+                ========================================================================
+                -->
                 <div class="grid-layout">
                     <div class="card" style="cursor: default;">
                         <div class="gif-preview">
-                            <div class="preview-stationery">
-                                <div class="preview-stationery-sheet"></div>
-                            </div>
+                            <!-- [ZONA EDITABLE] Reemplaza el src con tu imagen final -->
+                            <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=800&auto=format&fit=crop" alt="Cianotipia Botánica 1">
                         </div>
-                        <h3>Mockups de Papelería</h3>
-                        <p>Set de mockups minimalistas en alta resolución para presentaciones de branding corporativo.</p>
-                        <div class="card-actions"><a href="#" target="_blank" class="action-btn primary">Descargar</a></div>
+                        <h3>Próximamente</h3>
+                        <p>Nuevos recursos en preparación</p>
+                        <div class="card-actions"><a href="#" onclick="return false;" target="_blank" class="action-btn primary">Descargar</a></div>
                     </div>
                     <div class="card" style="cursor: default;">
                         <div class="gif-preview">
-                            <div class="preview-canvas-nodes">
-                                <div class="preview-node" style="top:20%; left:20%; animation-delay: 0s;"></div>
-                                <div class="preview-node" style="top:60%; left:70%; animation-delay: 0.5s;"></div>
-                                <div class="preview-node" style="top:40%; left:45%; animation-delay: 1s;"></div>
-                            </div>
+                            <!-- [ZONA EDITABLE] Reemplaza el src con tu imagen final -->
+                            <img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?q=80&w=800&auto=format&fit=crop" alt="Textura Cian 2">
                         </div>
-                        <h3>Pinceles Texturizados (PS)</h3>
-                        <p>Colección de pinceles para Adobe Photoshop, ideales para agregar texturas orgánicas a tus diseños.</p>
-                        <div class="card-actions"><a href="#" target="_blank" class="action-btn primary">Descargar</a></div>
+                        <h3>Próximamente</h3>
+                        <p>Nuevos recursos en preparación</p>
+                        <div class="card-actions"><a href="#" onclick="return false;" target="_blank" class="action-btn primary">Descargar</a></div>
                     </div>
                     <div class="card" style="cursor: default;">
                         <div class="gif-preview">
-                            <div class="preview-grid">
-                                <div class="preview-grid-item"></div>
-                                <div class="preview-grid-item"></div>
-                                <div class="preview-grid-item"></div>
-                                <div class="preview-grid-item"></div>
-                                <div class="preview-grid-item"></div>
-                                <div class="preview-grid-item"></div>
-                            </div>
+                            <!-- [ZONA EDITABLE] Reemplaza el src con tu imagen final -->
+                            <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=800&auto=format&fit=crop" alt="Naturaleza Cian 3">
                         </div>
-                        <h3>Plantillas para IG</h3>
-                        <p>Layouts editables para Instagram diseñados específicamente para estudios creativos y agencias.</p>
-                        <div class="card-actions"><a href="#" target="_blank" class="action-btn primary">Descargar</a></div>
+                        <h3>Próximamente</h3>
+                        <p>Nuevos recursos en preparación</p>
+                        <div class="card-actions"><a href="#" onclick="return false;" target="_blank" class="action-btn primary">Descargar</a></div>
                     </div>
                 </div>
             </section>
@@ -1546,7 +1614,10 @@
                         </div>
                     </div>
                     <div class="card" style="cursor: default;">
-                        <div class="gif-preview"><span class="brand-placeholder" style="color:var(--accent-blue); font-weight:700;">RETRACTED_GLASS</span></div>
+                        <div class="gif-preview video-hover-container">
+                            <video src="https://i.imgur.com/qLzN2uv.mp4" muted loop playsinline class="hover-video"></video>
+                            <img src="https://i.imgur.com/fq3LLvt.png" alt="Generador Retracted Glass" class="hover-image">
+                        </div>
                         <h3>Generador Retracted Glass</h3>
                         <p>Añade efecto Retracted Glass a tus imagenes.</p>
                         <div class="card-actions">
@@ -1555,8 +1626,9 @@
                         </div>
                     </div>
                     <div class="card" style="cursor: default;">
-                        <div class="gif-preview">
-                            <img src="https://images.unsplash.com/photo-1579546929518-9e396f3cc809?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Generador de Fluido">
+                        <div class="gif-preview video-hover-container">
+                            <video src="https://i.imgur.com/F7iTMk3.mp4" muted loop playsinline class="hover-video"></video>
+                            <img src="https://i.imgur.com/fzvyLGl.jpeg" alt="Generador de Fluido" class="hover-image">
                         </div>
                         <h3>Generador de Fluido</h3>
                         <p>Crea efecto liquido con diferentes tonos de color y textura.</p>
@@ -1567,8 +1639,8 @@
                     </div>
                     <!-- [AGREGADO] Tarjeta para el Generador de Cianotipia -->
                     <div class="card" style="cursor: default;">
-                        <div class="gif-preview" style="background: linear-gradient(135deg, #e4ded7 0%, #1A405D 100%);">
-                            <span class="brand-placeholder" style="color: #F4EFEA; font-weight: 700; letter-spacing: 4px;">CIANOTIPIA_FX</span>
+                        <div class="gif-preview">
+                            <img src="https://i.imgur.com/3sFX01P.png" alt="Generador Cianotipia">
                         </div>
                         <h3>Generador Cianotipia</h3>
                         <p>Añade efectos estilo Cianotipia a tus imagenes.</p>
@@ -2180,10 +2252,30 @@
                 });
             });
 
+            // --- Lógica interactiva de Video Hover ---
+            const videoHoverContainers = document.querySelectorAll('.video-hover-container');
+            videoHoverContainers.forEach(container => {
+                const video = container.querySelector('video');
+                if (video) {
+                    container.addEventListener('mouseenter', () => {
+                        // Iniciar video al pasar el cursor
+                        video.play().catch(err => console.log('El autoplay fue prevenido:', err));
+                    });
+                    container.addEventListener('mouseleave', () => {
+                        // Pausar y regresar al inicio al retirar el cursor
+                        video.pause();
+                        video.currentTime = 0;
+                    });
+                }
+            });
+
             // --- Lógica del Cajón Inmersivo de Detalle (Modal) ---
             const brandCards = document.querySelectorAll('.brand-card');
             brandCards.forEach(card => {
                 card.addEventListener('click', () => {
+                    // [COMENTARIO: Para reactivar los modales, elimina o comenta la siguiente línea]
+                    if (true) return; // TEMPORALMENTE DESACTIVADO
+
                     const projectKey = card.getAttribute('data-project');
                     const projectData = projectsDatabase[projectKey];
 
