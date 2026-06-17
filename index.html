@@ -3,22 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Zeqel Estudio | Diseño GRAFICO</title>
+    <title>Zeqel Estudio | Minimalist Branding & Digital Art</title>
     <link rel="icon" type="image/svg+xml" href="https://raw.githubusercontent.com/Zeqelmx/images-/d10cc36e121a6eb265bf851666c1d804aca6716c/favicon%20(1).svg">
     <style>
-        /* [MODIFICADO] Se agregó 'Inter' para UI/Textos secundarios y se mantuvo 'Fraunces' para encabezados.
-           ¿Por qué? Para crear un contraste editorial premium (Serif + Sans Serif limpia).
-           ¿Cómo ajustar? Si necesitas variaciones futuras, modifica los pesos (wght) directamente en esta URL. */
-        @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Inter:wght@400;500;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Inter:wght@300;400;500;600;900&display=swap');
 
         :root {
-            --bg-color: #F4EFEA;
-            --text-color: #1A1C20;
-            --accent-blue: #1A7392;
-            --light-blue: #73C2FB;
-            --border-color: rgba(26, 28, 32, 0.1);
-            
-            /* MODIFICADOR GLOBAL DE TEXTOS DE INICIO */
+            --bg-color: #000B18;
+            --text-color: #E9F2F9; 
+            --accent-blue: #5EA9FF;
+            --light-blue: #0A4D8C;
+            --border-color: rgba(94, 169, 255, 0.12);
             --hero-text-scale: 0.85;
         }
 
@@ -26,13 +21,9 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            /* [MODIFICADO] Tipografía global base cambiada a Inter.
-               ¿Por qué? Inter garantiza legibilidad en textos pequeños, navegación y UI, aportando un toque limpio y moderno que contrasta con la presencia artesanal de Fraunces.
-               ¿Cómo ajustar? Cambia 'Inter' por otra Sans Serif geométrica si lo deseas. */
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, Arial, sans-serif;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
-            /* [AGREGADO] Optimiza las ligaduras y el espaciado interno para textos editoriales premium. */
             text-rendering: optimizeLegibility;
         }
 
@@ -48,9 +39,9 @@
             line-height: 1.6;
             min-height: 100vh;
             min-height: 100dvh;
+            position: relative;
         }
 
-        /* --- Fotografía de cielo — siempre visible en todas las páginas --- */
         body::before {
             content: "";
             position: fixed;
@@ -59,11 +50,11 @@
             width: 100vw;
             height: 100vh;
             height: 100dvh;
-            background-image: url('https://cdn.pixabay.com/photo/2018/08/14/22/00/blue-sky-3606717_1280.jpg');
+            background-image: url('https://unsplash.com/photos/XWZOgMP20QQ/download?w=2000');
             background-size: cover;
-            background-position: center top;
-            filter: saturate(0.85) contrast(0.95) brightness(1.05);
-            opacity: 0.78;
+            background-position: center center;
+            filter: grayscale(100%) contrast(1.6) sepia(100%) hue-rotate(185deg) saturate(3.5) brightness(0.7);
+            opacity: 0.95;
             z-index: -2;
             pointer-events: none;
             -webkit-mask-image: linear-gradient(
@@ -92,7 +83,6 @@
             100% { transform: scale(1.15) translateY(-3.5%); }
         }
 
-        /* --- Sistema de Nubes Parallax --- */
         #clouds-container {
             position: fixed;
             top: 0;
@@ -127,7 +117,7 @@
             left: 0;
             width: 100vw;
             height: 50vh;
-            background: linear-gradient(to bottom, rgba(26, 115, 146, 0.2) 0%, rgba(26, 115, 146, 0) 100%);
+            background: linear-gradient(to bottom, rgba(0, 11, 24, 0.8) 0%, rgba(0, 11, 24, 0) 100%);
             z-index: 10;
             pointer-events: none;
         }
@@ -139,6 +129,7 @@
             background-image: url('https://raw.githubusercontent.com/eamxat/Imagenes-Zeqel/refs/heads/main/ccloud.png');
             background-repeat: repeat;
             will-change: transform;
+            filter: brightness(0.3) opacity(0.4);
         }
 
         .cloud-layer-1 {
@@ -181,7 +172,6 @@
             100% { transform: translate3d(calc(var(--size) * -1), 0, 0); }
         }
 
-        /* --- Degradado beige inferior — siempre visible en todas las páginas --- */
         body::after {
             content: "";
             position: fixed;
@@ -191,16 +181,16 @@
             height: 60vh;
             background: linear-gradient(
                 to bottom,
-                rgba(244, 239, 234, 0) 0%,
-                rgba(244, 239, 234, 0.5) 50%,
-                rgba(244, 239, 234, 0.88) 75%,
-                rgba(244, 239, 234, 1) 100%
+                rgba(0, 11, 24, 0) 0%,
+                rgba(0, 11, 24, 0.7) 50%,
+                rgba(0, 11, 24, 0.95) 75%,
+                rgba(0, 11, 24, 1) 100%
             );
             z-index: -2;
             pointer-events: none;
+            display: none;
         }
 
-        /* --- Grain canvas global --- */
         #grain-canvas {
             position: fixed;
             top: 0;
@@ -209,20 +199,17 @@
             height: 100vh;
             pointer-events: none;
             z-index: 9999;
-            opacity: 0.042;
-            mix-blend-mode: multiply;
+            opacity: 0.08;
+            mix-blend-mode: color-dodge; 
         }
 
-        /* =========================================================
-           SISTEMA LIQUID GLASS PREMIUM (visionOS / macOS Style)
-           ========================================================= */
         nav {
             position: fixed;
             top: 0;
             width: 100%;
-            padding: 1.5rem 3rem;
+            padding: 1.5rem 4rem;
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-end;
             align-items: center;
             z-index: 1000;
             background: transparent;
@@ -236,10 +223,7 @@
             position: absolute;
             inset: 0;
             z-index: -2;
-            backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
-            filter: url(#glass-distortion);
-            background: rgba(255, 255, 255, 0.05);
+            background: transparent;
             transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.1);
         }
 
@@ -248,81 +232,56 @@
             position: absolute;
             inset: 0;
             z-index: -1;
-            box-shadow: 
-                inset 1px 1px 1px 0 rgba(255, 255, 255, 0.2),
-                inset -1px -1px 1px 0 rgba(255, 255, 255, 0.05);
+            box-shadow: none;
             transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.1);
             pointer-events: none;
         }
 
         nav.nav-scrolled {
-            padding: 1rem 3rem; 
+            padding: 1rem 4rem; 
         }
 
         nav.nav-scrolled::before {
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            background: rgba(0, 11, 24, 0.3);
         }
 
         nav.nav-scrolled::after {
-            box-shadow: 
-                inset 2px 2px 1px 0 rgba(255, 255, 255, 0.5),
-                inset -1px -1px 1px 1px rgba(255, 255, 255, 0.3),
-                0 6px 12px rgba(0, 0, 0, 0.06), 
-                0 0 20px rgba(0, 0, 0, 0.04);
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-            cursor: pointer;
-        }
-
-        .logo-img {
-            height: 70px;
-            width: auto;
-            opacity: 0;
-            transform-origin: center center;
-            animation: flyLogoIn 1.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.27);
-        }
-
-        @keyframes flyLogoIn {
-            0% { 
-                opacity: 0; 
-                transform: translateY(20px) scale(0.9) rotate(-3deg);
-            }
-            100% { 
-                opacity: 1; 
-                transform: translateY(0) scale(1) rotate(0deg);
-            }
-        }
-
-        .logo-img:hover {
-            transform: scale(1.05);
+            box-shadow: 0 1px 0 rgba(255, 255, 255, 0.02);
         }
 
         .nav-links {
+            position: fixed;
+            right: 4rem;
+            top: 50%;
+            transform: translateY(-50%);
             display: flex;
-            gap: 2.5rem;
+            flex-direction: column;
+            gap: 4rem;
+            align-items: center;
+            z-index: 1000;
         }
 
         .nav-links a {
-            color: #000000;
+            color: var(--text-color);
             text-decoration: none;
-            font-size: 0.85rem;
-            /* [MODIFICADO] Peso 500 (Medium) para Inter en la navegación.
-               ¿Por qué? Da un aspecto más refinado y equilibrado para la interfaz, sin quitarle peso visual al titular.
-               ¿Cómo ajustar? Sube a 600 si lo quieres más grueso, o baja a 400 para un look más frágil. */
-            font-weight: 500;
+            font-size: 0.65rem;
+            font-weight: 400;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: color 0.3s ease;
+            letter-spacing: 4px;
+            opacity: 0.35;
+            transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
         }
 
+        /* Enlaces más oscuros/gruesos y coloreados en azul al pasar el cursor */
         .nav-links a:hover {
+            opacity: 1;
             color: var(--accent-blue);
+            font-weight: 900;
+            letter-spacing: 7px;
         }
 
         .mobile-menu-btn {
@@ -356,7 +315,6 @@
             transform: translateY(-8px) rotate(-45deg);
         }
 
-        /* Hero Section */
         .hero {
             height: 100vh;
             height: 100dvh;
@@ -364,7 +322,9 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: 18vh 10% 0;
+            align-items: center; 
+            text-align: center;
+            padding: 0 10%;
             position: relative;
             background-color: transparent;
         }
@@ -382,46 +342,85 @@
 
         .hero-content {
             z-index: 1;
-            /* [MODIFICADO] Ancho máximo reducido de 900px a 780px.
-               ¿Por qué? Acorta la longitud de línea general, agrupando los textos y creando un aspecto de "columna editorial" que hace destacar el espacio en blanco (aire) alrededor.
-               ¿Cómo ajustar? Modifica este valor (ej. 850px o 700px) para cambiar el ancho total del bloque de texto. */
-            max-width: 780px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             position: relative;
         }
 
-        .hero-content .label {
+        .hero-tiger {
+            width: clamp(280px, 35vw, 450px); 
+            height: auto;
+            margin: 2rem auto 2.5rem auto; 
+            display: block;
+            filter: drop-shadow(0 0 25px rgba(10, 77, 140, 0.5));
+            cursor: pointer;
+            transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .hero-tiger:hover {
+            transform: scale(1.05);
+        }
+
+        .unified-text-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 1.2rem;
+            max-width: 650px;
+            margin: 0 auto;
+            
+            /* Animación inicial oculta (Se revela al click) */
             opacity: 0;
             transform: translateY(20px);
-            animation: fadeInLabel 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+            max-height: 0;
+            overflow: hidden;
+            transition: opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1),
+                        transform 1.2s cubic-bezier(0.22, 1, 0.36, 1),
+                        max-height 1.2s cubic-bezier(0.22, 1, 0.36, 1);
         }
 
-        .hero-content h1 {
+        /* Clase activa controlada por JS */
+        .unified-text-container.active {
+            opacity: 1;
+            transform: translateY(0);
+            max-height: 500px;
+        }
+
+        .main-text-block {
+            font-family: 'Fraunces', Georgia, serif;
+            font-size: clamp(1.05rem, 1.6vw, 1.35rem);
+            font-weight: bold;
+            font-style: italic;
+            line-height: 1.6;
+            letter-spacing: 0.01em;
+            color: var(--text-color);
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        .sub-text-block {
+            font-family: 'Fraunces', Georgia, serif;
+            font-size: clamp(0.85rem, 1vw, 0.95rem);
+            font-weight: 300;
+            line-height: 1.7;
+            color: var(--text-color);
+            opacity: 0.65;
+            max-width: 500px;
+            margin: 0;
+        }
+
+        .scroll-reveal {
             opacity: 0;
             transform: translateY(30px);
-            animation: fadeInUp 1.2s cubic-bezier(0.25, 1, 0.5, 1) 0.3s forwards;
+            transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1), transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
         }
-
-        .hero-content p {
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 1.2s cubic-bezier(0.25, 1, 0.5, 1) 0.5s forwards;
-        }
-
-        .hero-content p.secondary-text {
-            animation-delay: 0.7s;
-        }
-
-        @keyframes fadeInLabel {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-                letter-spacing: 0px;
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-                letter-spacing: 3px;
-            }
+        .scroll-reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .label {
@@ -434,91 +433,6 @@
             display: block;
         }
 
-        .hero h1 {
-            font-family: 'Fraunces', Georgia, serif;
-            /* [MODIFICADO] Tamaño incrementado entre 15-20%. (Antes: clamp(2.5rem, 5vw, 4.5rem))
-               ¿Por qué? Para dar jerarquía absoluta y presencia monumental al titular principal.
-               ¿Cómo ajustar? Modifica los valores en clamp() o ajusta la variable --hero-text-scale. */
-            font-size: calc(clamp(3rem, 6.5vw, 5.4rem) * var(--hero-text-scale));
-            /* [MODIFICADO] Peso a 600 (SemiBold).
-               ¿Por qué? Fraunces en SemiBold luce más escultural y atemporal, ideal para una marca creativa y artesanal. */
-            font-weight: 600;
-            /* [MODIFICADO] Letter-spacing corregido a un tracking negativo sutil.
-               ¿Por qué? Las fuentes serif en tamaños grandes lucen más elegantes y compactas con un ligero ajuste negativo (-0.02em). */
-            letter-spacing: -0.02em;
-            line-height: 1.05;
-            color: var(--text-color);
-            /* [MODIFICADO] Espacio inferior aumentado sutilmente para darle aire antes del subtítulo. */
-            margin-bottom: 0.8rem;
-        }
-
-        .hero h1 em {
-            font-style: italic;
-            color: var(--accent-blue);
-        }
-
-        .hero .subtitle {
-            font-family: 'Fraunces', Georgia, serif;
-            /* [MODIFICADO] Tamaño incrementado ligeramente para destacar como puente emocional. */
-            font-size: calc(clamp(1.6rem, 2.8vw, 2.3rem) * var(--hero-text-scale));
-            /* [MODIFICADO] Estilo Itálico y peso regular.
-               ¿Por qué? Convierte el subtítulo en una continuación emocional, humana y poética del gran titular.
-               ¿Cómo ajustar? Borra 'font-style: italic' si prefieres la fuente recta. */
-            font-style: italic;
-            font-weight: 400;
-            color: var(--text-color);
-            /* [MODIFICADO] Aumento de espacio inferior (de 2.5rem a 3.5rem) para crear una pausa visual intencionada antes de los párrafos. */
-            margin-bottom: 3.5rem;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 1.2s cubic-bezier(0.25, 1, 0.5, 1) 0.4s forwards;
-        }
-
-        .hero p {
-            /* [MODIFICADO] Se reestructuraron los márgenes para separar los párrafos de forma jerárquica. */
-            margin-top: 0;
-            margin-bottom: 1.5rem;
-            font-size: calc(clamp(1rem, 1.1vw, 1.1rem) * var(--hero-text-scale));
-            opacity: 0.85;
-            /* [MODIFICADO] Reducción de ancho máximo exclusivo para los párrafos (Antes: 750px a 600px).
-               ¿Por qué? El contraste visual entre el titular ancho y el texto descriptivo estrecho es un principio clásico del diseño editorial premium. */
-            max-width: 600px;
-            /* [MODIFICADO] Uso explícito de Inter regular para asegurar lectura perfecta. */
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, Arial, sans-serif;
-            font-weight: 400;
-            line-height: 1.8;
-        }
-
-        .hero p.secondary-text {
-            font-size: calc(0.95rem * var(--hero-text-scale));
-            opacity: 0.65;
-            /* [MODIFICADO] Más aire superior para separar dramáticamente la frase final del resto de la descripción. */
-            margin-top: 2rem;
-            margin-bottom: 0;
-            max-width: 700px;
-        }
-
-        .hero p strong {
-            /* [MODIFICADO] Peso 500 (Medium) para la frase final en negrita.
-               ¿Por qué? Evita que la fuente Inter se vuelva demasiado "pesada" o tosca al usar negrita (800 era muy agresivo). */
-            font-weight: 500;
-            color: #000000;
-        }
-
-        /* --- Efecto Typewriter Cursor --- */
-        .typewriter-cursor::after {
-            content: '|';
-            color: var(--accent-blue);
-            font-weight: 400;
-            margin-left: 2px;
-            animation: blinkCaret 0.8s step-end infinite;
-        }
-        @keyframes blinkCaret {
-            from, to { opacity: 1; }
-            50% { opacity: 0; }
-        }
-
-        /* --- Estilos para las Páginas (SPA) --- */
         .page {
             display: none;
             opacity: 0;
@@ -541,6 +455,7 @@
 
         #inicio.active {
             display: flex;
+            flex-direction: column;
         }
 
         @keyframes fadeInPage {
@@ -576,24 +491,24 @@
         .grid-layout {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
-            gap: 2rem;
+            gap: 2.5rem;
         }
 
         .card {
-            background: rgba(244, 239, 234, 0.4);
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
+            background: rgba(0, 43, 91, 0.25);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             border: 1px solid var(--border-color);
             border-radius: 2px;
             padding: 3rem 2.5rem;
-            transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), background 0.3s ease;
+            transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1), background 0.4s ease, border-color 0.4s ease;
             cursor: pointer;
         }
 
         .card:hover {
             transform: translateY(-8px);
-            background: rgba(26, 115, 146, 0.08);
-            border-color: rgba(26, 115, 146, 0.3);
+            background: rgba(10, 77, 140, 0.15);
+            border-color: rgba(94, 169, 255, 0.3);
         }
 
         .card h3 {
@@ -611,13 +526,13 @@
         .gif-preview {
             width: 100%;
             aspect-ratio: 16 / 9;
-            background: rgba(26, 28, 32, 0.05);
+            background: rgba(10, 77, 140, 0.15);
             margin-bottom: 1.8rem;
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
-            border: 1px solid rgba(26, 28, 32, 0.1);
+            border: 1px solid rgba(94, 169, 255, 0.1);
             position: relative;
         }
 
@@ -628,9 +543,15 @@
             position: absolute;
             top: 0;
             left: 0;
+            filter: grayscale(100%) contrast(1.6) sepia(100%) hue-rotate(185deg) saturate(3.5) brightness(0.85);
+            transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
-        /* --- Video Hover Preview Styles --- */
+        .card:hover .gif-preview img {
+            transform: scale(1.03);
+            filter: grayscale(100%) contrast(1.4) sepia(100%) hue-rotate(185deg) saturate(3) brightness(1.1);
+        }
+
         .video-hover-container .hover-video {
             width: 100%;
             height: 100%;
@@ -677,20 +598,20 @@
         }
 
         .action-btn:hover {
-            background: rgba(26, 28, 32, 0.05);
+            background: rgba(255, 255, 255, 0.05);
             border-color: var(--text-color);
         }
 
         .action-btn.primary {
-            background: var(--text-color);
-            color: var(--bg-color);
-            border-color: var(--text-color);
+            background: var(--light-blue);
+            color: var(--text-color);
+            border-color: var(--light-blue);
         }
 
         .action-btn.primary:hover {
-            background: var(--accent-blue);
-            border-color: var(--accent-blue);
-            color: white;
+            background: var(--text-color);
+            border-color: var(--text-color);
+            color: #000B18;
         }
 
         .contact-wrapper {
@@ -741,9 +662,9 @@
         }
 
         .brand-card {
-            background: rgba(244, 239, 234, 0.4);
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
+            background: rgba(0, 43, 91, 0.25);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             border: 1px solid var(--border-color);
             border-radius: 4px;
             aspect-ratio: 1.2 / 1;
@@ -752,7 +673,7 @@
             justify-content: center;
             align-items: center;
             padding: 2rem;
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
             cursor: pointer;
             position: relative;
             overflow: hidden;
@@ -762,7 +683,7 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(135deg, rgba(26, 115, 146, 0.05) 0%, rgba(26, 115, 146, 0) 100%);
+            background: linear-gradient(135deg, rgba(94, 169, 255, 0.1) 0%, rgba(94, 169, 255, 0) 100%);
             opacity: 0;
             transition: opacity 0.4s ease;
         }
@@ -773,9 +694,9 @@
 
         .brand-card:hover {
             transform: translateY(-8px);
-            background: rgba(255, 255, 255, 0.6);
-            border-color: rgba(26, 115, 146, 0.4);
-            box-shadow: 0 10px 30px rgba(26, 115, 146, 0.06);
+            background: rgba(10, 77, 140, 0.2);
+            border-color: rgba(94, 169, 255, 0.5);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
 
         .brand-card .brand-name {
@@ -802,7 +723,6 @@
             z-index: 1;
         }
 
-        /* --- Sponsors Section --- */
         .sponsors-section {
             margin-top: 6rem;
             border-top: 1px solid var(--border-color);
@@ -830,13 +750,13 @@
         .sponsor-item svg, .sponsor-item img {
             height: 38px;
             width: auto;
-            filter: grayscale(100%);
+            filter: grayscale(100%) brightness(0) invert(1);
             opacity: 0.4;
             transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
         .sponsor-item img.ps-icon {
-            height: 46px; /* Aumento sutil solo para Photoshop */
+            height: 46px; 
         }
 
         .sponsor-item span {
@@ -850,7 +770,7 @@
         }
 
         .sponsor-item:hover svg, .sponsor-item:hover img {
-            filter: grayscale(0%);
+            filter: grayscale(0%) brightness(0) invert(1) drop-shadow(0 0 12px rgba(94,169,255,0.6));
             opacity: 1;
             transform: scale(1.15);
         }
@@ -877,14 +797,13 @@
             }
         }
 
-        /* --- Legal Content Styles --- */
         .legal-content {
             max-width: 850px;
             margin: 0 auto;
             padding: 4rem;
-            background: rgba(244, 239, 234, 0.4);
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
+            background: rgba(0, 43, 91, 0.25);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             border: 1px solid var(--border-color);
             border-radius: 2px;
         }
@@ -942,32 +861,116 @@
             color: var(--accent-blue);
         }
 
-        @media (max-width: 768px) {
-            .legal-content {
-                padding: 2.5rem 1.5rem;
-            }
-            .legal-content h3::before {
-                left: -10px;
-            }
+        /* --- Nueva Galería Flotante (CARRUSEL 3D INMERSIVO PERFECTO) --- */
+        .floating-gallery-wrapper {
+            width: 100%;
+            padding: 12rem 0 8rem; /* Separado mucho más hacia abajo */
+            position: relative;
+            perspective: 1200px; /* Habilita el entorno de profundidad 3D */
+            -webkit-perspective: 1200px; /* Compatibilidad estricta Safari / iOS */
+            display: flex;
+            flex-direction: column; /* Apila el carrusel y el texto verticalmente */
+            align-items: center;
         }
 
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        /* ELIMINADOS los degradados laterales oscuros que recortaban la ilusión óptica */
+        .floating-gallery-wrapper::before,
+        .floating-gallery-wrapper::after {
+            display: none;
+        }
+
+        .gallery-track {
+            display: flex;
+            /* Se requiere transform-style para conservar el volumen en los hijos */
+            transform-style: preserve-3d;
+            -webkit-transform-style: preserve-3d; /* Compatibilidad estricta Safari / iOS */
+            animation: rotateGallery3D 30s linear infinite;
+            /* Centrado absoluto en el espacio para orbitar */
+            position: relative;
+            width: 200px;
+            height: 280px;
+        }
+
+        .gallery-track:hover {
+            animation-play-state: paused;
+        }
+
+        .gallery-item {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 2px;
+            border: 1px solid rgba(233, 242, 249, 0.08);
+            background: rgba(0, 31, 63, 0.3);
+            /* Transformación radial (Calculada para 10 elementos: 360/10 = 36 grados de separación) */
+            /* Traslación Z ajustada para un radio cilíndrico armónico que evite superposición central */
+        }
+
+        /* Orientación de las caras del prisma decagonal */
+        .gallery-item:nth-child(1) { transform: rotateY(0deg) translateZ(340px); }
+        .gallery-item:nth-child(2) { transform: rotateY(36deg) translateZ(340px); }
+        .gallery-item:nth-child(3) { transform: rotateY(72deg) translateZ(340px); }
+        .gallery-item:nth-child(4) { transform: rotateY(108deg) translateZ(340px); }
+        .gallery-item:nth-child(5) { transform: rotateY(144deg) translateZ(340px); }
+        .gallery-item:nth-child(6) { transform: rotateY(180deg) translateZ(340px); }
+        .gallery-item:nth-child(7) { transform: rotateY(216deg) translateZ(340px); }
+        .gallery-item:nth-child(8) { transform: rotateY(252deg) translateZ(340px); }
+        .gallery-item:nth-child(9) { transform: rotateY(288deg) translateZ(340px); }
+        .gallery-item:nth-child(10) { transform: rotateY(324deg) translateZ(340px); }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* Filtros eliminados para mostrar el color 100% original */
+            filter: none;
+            transition: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+            /* Filtros eliminados para mostrar el color 100% original */
+            filter: none;
+        }
+
+        @keyframes rotateGallery3D {
+            0% { transform: rotateY(0deg); }
+            100% { transform: rotateY(360deg); }
+        }
+
+        .gallery-caption {
+            margin-top: 6.5rem; /* Separación drásticamente aumentada hacia abajo */
+            font-family: 'Inter', sans-serif;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--accent-blue);
+            opacity: 0.5;
+            font-weight: 600;
         }
 
         footer {
-            padding: 4rem 10% 3rem;
-            border-top: 1px solid var(--border-color);
+            padding: 28rem 0 3rem; /* Textos del footer empujados aún más hacia abajo */
+            border-top: none;
             display: flex;
             flex-direction: column;
-            gap: 4rem;
+            gap: 0;
             font-size: 0.85rem;
             color: var(--text-color);
             opacity: 1;
-            background-color: transparent;
+            background: transparent;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-content {
+            padding: 0 10%;
+            display: flex;
+            flex-direction: column;
+            gap: 4rem;
+            margin-top: 2rem;
         }
 
         .footer-brand {
@@ -990,6 +993,7 @@
 
         .logo-black {
             transition: opacity 0.3s ease;
+            filter: brightness(0) invert(1);
         }
 
         .logo-color {
@@ -997,7 +1001,7 @@
             top: 0;
             left: 0;
             opacity: 0;
-            filter: invert(62%) sepia(14%) saturate(1394%) hue-rotate(146deg) brightness(94%) contrast(87%);
+            filter: invert(65%) sepia(21%) saturate(1512%) hue-rotate(167deg) brightness(97%) contrast(90%);
             transition: opacity 0.3s ease;
         }
 
@@ -1014,13 +1018,6 @@
             justify-content: space-between;
             align-items: flex-end;
             width: 100%;
-        }
-
-        .footer-tiger-icon {
-            height: 35px;
-            width: auto;
-            margin-bottom: 0.8rem;
-            opacity: 0.85;
         }
 
         .clock {
@@ -1056,11 +1053,10 @@
             text-align: right;
         }
 
-        /* --- Sistema interactivo de Modales (Drawer de Detalle) --- */
         .modal-overlay {
             position: fixed;
             inset: 0;
-            background: rgba(26, 28, 32, 0.4);
+            background: rgba(0, 31, 63, 0.8);
             backdrop-filter: blur(8px);
             z-index: 2000;
             display: flex;
@@ -1081,14 +1077,14 @@
             background: var(--bg-color);
             border-left: 1px solid var(--border-color);
             height: 100%;
-            box-shadow: -10px 0 30px rgba(0,0,0,0.05);
+            box-shadow: -10px 0 30px rgba(0,0,0,0.2);
             padding: 4rem 3rem;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             overflow-y: auto;
             transform: translateX(100%);
-            transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+            transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
         .modal-overlay.active .modal-container {
@@ -1145,7 +1141,7 @@
             width: 45px;
             height: 45px;
             border-radius: 50%;
-            border: 1px solid rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             position: relative;
             cursor: pointer;
         }
@@ -1167,100 +1163,42 @@
             opacity: 1;
         }
 
-        /* --- Estilos interactivos para vistas previas de recursos --- */
-        .preview-stationery {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: linear-gradient(135deg, #e4ded7 0%, #dbd4cb 100%);
-            perspective: 600px;
-        }
-
-        .preview-stationery-sheet {
-            width: 100px;
-            height: 140px;
-            background: white;
-            box-shadow: 2px 5px 15px rgba(0,0,0,0.08);
-            transform: rotateX(20deg) rotateY(-15deg);
-            transition: transform 0.5s ease;
-            position: relative;
-            padding: 15px;
-        }
-
-        .preview-stationery-sheet::before {
-            content: '';
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            width: 30px;
-            height: 8px;
-            background: var(--accent-blue);
-        }
-
-        .preview-stationery:hover .preview-stationery-sheet {
-            transform: rotateX(10deg) rotateY(-5deg) translateY(-10px);
-        }
-
-        .preview-canvas-nodes {
-            width: 100%;
-            height: 100%;
-            background: #111;
-            position: relative;
+        #prussian-light-environment {
+            position: fixed;
+            inset: 0;
+            z-index: -2; 
+            pointer-events: none;
             overflow: hidden;
+            opacity: 0;
+            filter: blur(15px);
+            transform: translateY(30px);
+            transition: opacity 1.8s cubic-bezier(0.22, 1, 0.36, 1),
+                        filter 1.8s cubic-bezier(0.22, 1, 0.36, 1),
+                        transform 1.8s cubic-bezier(0.22, 1, 0.36, 1);
+            will-change: opacity, filter, transform;
+            -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%);
+            mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%);
         }
 
-        .preview-node {
-            position: absolute;
-            width: 6px;
-            height: 6px;
-            background: #73C2FB;
-            border-radius: 50%;
-            box-shadow: 0 0 10px #73C2FB;
-            animation: floatNode 4s ease-in-out infinite alternate;
+        #prussian-light-environment.active {
+            opacity: 0.95; 
+            filter: blur(0px); 
+            transform: translateY(0);
         }
 
-        @keyframes floatNode {
-            0% { transform: translateY(0) translateX(0); }
-            100% { transform: translateY(-15px) translateX(15px); }
-        }
-
-        .preview-grid {
+        #prussianLightCanvas {
             width: 100%;
             height: 100%;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 5px;
-            padding: 10px;
-            background: #fafafa;
+            display: block;
         }
 
-        .preview-grid-item {
-            background: linear-gradient(45deg, #f4efea, #73c2fb22);
-            border: 1px solid rgba(0,0,0,0.05);
-            transition: all 0.3s ease;
-        }
-
-        .preview-grid:hover .preview-grid-item {
-            filter: saturate(1.5);
-            transform: scale(0.98);
-        }
-
-        /* Responsive */
         @media (max-width: 768px) {
+            .tech-coordinates {
+                top: 1.5rem;
+                transform: translateX(-50%) scale(0.85);
+            }
             nav {
-                padding: 1.2rem 5%;
-                flex-direction: row;
-                justify-content: space-between;
-                align-items: center;
-                gap: 0;
-            }
-            nav.nav-scrolled {
-                padding: 0.8rem 5%;
-            }
-            .logo-img {
-                height: 55px;
+                padding: 1rem 5%;
             }
             .mobile-menu-btn {
                 display: flex;
@@ -1269,48 +1207,42 @@
                 position: absolute;
                 top: 100%;
                 left: 0;
+                right: 0;
+                transform: none;
+                flex-direction: column;
                 width: 100%;
-                background: rgba(244, 239, 234, 0.95);
+                background: rgba(0, 11, 24, 0.95);
                 backdrop-filter: blur(15px);
                 -webkit-backdrop-filter: blur(15px);
-                flex-direction: column;
-                align-items: center;
                 padding: 2.5rem 0;
                 gap: 2.5rem;
-                border-bottom: 1px solid rgba(26, 28, 32, 0.05);
+                border-bottom: 1px solid rgba(233, 242, 249, 0.05);
                 box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
                 opacity: 0;
                 pointer-events: none;
-                transform: translateY(-10px);
                 transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+                writing-mode: horizontal-tb;
             }
             .nav-links.active {
                 opacity: 1;
                 pointer-events: auto;
-                transform: translateY(0);
             }
             .nav-links a {
-                font-size: 0.9rem;
-                padding: 0.5rem 1rem;
+                writing-mode: horizontal-tb;
+                transform: none;
+                font-size: 0.85rem;
+                letter-spacing: 2px;
+            }
+            .nav-links a:hover {
+                letter-spacing: 2px;
             }
             .hero {
-                padding: 120px 5% 60px;
+                padding: 180px 5% 60px;
                 height: auto;
                 min-height: 100vh;
-                text-align: center;
-                align-items: center;
-                justify-content: flex-start;
             }
-            .hero-content {
-                margin-top: 2rem;
-            }
-            .hero-content p {
-                margin: 1.5rem auto 0 auto;
-                text-align: center;
-            }
-            .hero h1 {
-                /* [MODIFICADO] Aumento de tamaño proporcional para dispositivos móviles manteniendo la jerarquía H1. */
-                font-size: calc(clamp(2.5rem, 8.5vw, 3.8rem) * var(--hero-text-scale));
+            .hero-tiger {
+                margin: 0 auto 4rem auto;
             }
             .page {
                 padding-top: 120px;
@@ -1333,15 +1265,38 @@
                 height: 32px;
             }
             .sponsor-item img.ps-icon {
-                height: 38px; /* Aumento proporcional en móvil */
+                height: 38px;
             }
             .card {
                 padding: 2rem 1.5rem;
             }
             footer {
-                padding: 4rem 5% 3rem;
-                gap: 2.5rem;
+                padding: 20rem 0 3rem; /* Espacio vertical extra grande hacia abajo en móviles */
+                gap: 0;
             }
+            .footer-content {
+                padding: 0 5%;
+                gap: 2.5rem;
+                margin-top: 1rem;
+            }
+            .floating-gallery-wrapper {
+                padding: 8rem 0 4rem; /* Galería empujada más hacia abajo en móviles */
+            }
+            .gallery-track {
+                width: 150px;
+                height: 210px;
+            }
+            .gallery-item:nth-child(1) { transform: rotateY(0deg) translateZ(250px); }
+            .gallery-item:nth-child(2) { transform: rotateY(36deg) translateZ(250px); }
+            .gallery-item:nth-child(3) { transform: rotateY(72deg) translateZ(250px); }
+            .gallery-item:nth-child(4) { transform: rotateY(108deg) translateZ(250px); }
+            .gallery-item:nth-child(5) { transform: rotateY(144deg) translateZ(250px); }
+            .gallery-item:nth-child(6) { transform: rotateY(180deg) translateZ(250px); }
+            .gallery-item:nth-child(7) { transform: rotateY(216deg) translateZ(250px); }
+            .gallery-item:nth-child(8) { transform: rotateY(252deg) translateZ(250px); }
+            .gallery-item:nth-child(9) { transform: rotateY(288deg) translateZ(250px); }
+            .gallery-item:nth-child(10) { transform: rotateY(324deg) translateZ(250px); }
+            
             .footer-logo-wrapper {
                 max-width: 220px;
                 margin: 0 auto;
@@ -1357,31 +1312,35 @@
                 flex-direction: column;
                 align-items: center;
             }
-            .footer-tiger-icon {
-                margin: 0 auto 0.8rem auto;
-            }
             .location {
                 text-align: center;
+                align-items: center !important;
+            }
+            .coord-data {
+                justify-content: center;
             }
             .modal-container {
                 padding: 4rem 1.5rem;
+            }
+            .legal-content {
+                padding: 2.5rem 1.5rem;
+            }
+            .legal-content h3::before {
+                left: -10px;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Canvas de grain global -->
     <canvas id="grain-canvas"></canvas>
 
-    <!-- Sistema de Nubes Animadas Multicapa -->
     <div id="clouds-container">
         <div class="cloud-layer cloud-layer-1"></div>
         <div class="cloud-layer cloud-layer-2"></div>
         <div class="cloud-layer cloud-layer-3"></div>
     </div>
 
-    <!-- Filtro SVG Liquid Glass Distortion (optimizado orgánico) -->
     <svg style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
         <defs>
             <filter id="glass-distortion" x="0%" y="0%" width="100%" height="100%">
@@ -1393,116 +1352,102 @@
     </svg>
 
     <nav>
-        <div class="logo-container">
-            <img src="https://raw.githubusercontent.com/eamxat/Imagenes-Zeqel/a7043297121f9d66c3d701d43d9fedd293209969/Isotipo%20Zeqel.svg" alt="Isotipo Zeqel" class="logo-img">
-        </div>
+        <div class="nav-empty-space"></div>
         <button class="mobile-menu-btn" aria-label="Abrir menú">
             <span></span>
             <span></span>
             <span></span>
         </button>
         <div class="nav-links">
+            <a href="#inicio">Inicio</a>
             <a href="#proyectos">Proyectos</a>
             <a href="#recursos">Recursos</a>
-            <a href="#codigo-abierto">Código Abierto</a>
+            <a href="#codigo-abierto">Generadores</a>
             <a href="#contacto">Contacto</a>
         </div>
     </nav>
 
-    <!-- Canvas de fondo global -->
     <canvas id="bg-canvas"></canvas>
 
-    <!-- Contenedor Principal de Páginas -->
+    <div id="prussian-light-environment">
+        <canvas id="prussianLightCanvas"></canvas>
+    </div>
+
     <main id="main-content">
-        
-        <!-- PÁGINA: INICIO -->
         <div id="inicio" class="page active">
             <section class="hero">
                 <div class="hero-content">
-                    <h1>Diseñamos identidades visuales.</h1>
-                    <div class="subtitle">para personas que construyen algo propio.</div>
-                    <p>Inspirados por la naturaleza, las texturas orgánicas y los procesos analógicos, exploramos formas de crear marcas auténticas que transmitan personalidad, propósito y una conexión genuina con las personas.</p>
-                    <p>Nuestro enfoque combina experimentación visual, criterio creativo y herramientas contemporáneas para transformar ideas en identidades con carácter y significado.</p>
-                    <p class="secondary-text"><strong id="typewriter-text">Porque una marca no se trata solo de cómo se ve, sino de cómo se siente.</strong></p>
+                    <img src="https://raw.githubusercontent.com/eamxat/Imagenes-Zeqel/25748ede8c035f60817864ecee3360ab78b03d55/Isotipo%20Zeqel%20blanco.svg" alt="Zeqel Isotipo" class="hero-tiger scroll-reveal" id="hero-trigger-btn" style="transition-delay: 0ms;">
+                    
+                    <div class="unified-text-container" id="hero-hidden-text">
+                        <h1 class="main-text-block">Un estudio creativo inspirado por la naturaleza, la experimentación y las ideas que buscan tomar forma.</h1>
+                        <p class="sub-text-block">Creamos visuales, identidades y proyectos con personalidad, mezclando creatividad, exploración y nuevas formas de crear para construir algo auténtico.</p>
+                    </div>
                 </div>
             </section>
+
+            <!-- NUEVA GALERÍA FLOTANTE (ESTILO CIANOTIPIA - MOVIDA AL INICIO) -->
+            <div class="floating-gallery-wrapper">
+                <div class="gallery-track">
+                    <!-- Imágenes de Cianotipia Botánica (Unsplash) -->
+                    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1543160862-2a91f3eb3c7d?q=80&w=600&auto=format&fit=crop" alt="Cianotipia Hoja 1"></div>
+                    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1463320726281-696a485928c7?q=80&w=600&auto=format&fit=crop" alt="Cianotipia Helecho 1"></div>
+                    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1520301255226-bf5f1444d1ba?q=80&w=600&auto=format&fit=crop" alt="Cianotipia Monstera"></div>
+                    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=600&auto=format&fit=crop" alt="Cianotipia Rama"></div>
+                    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?q=80&w=600&auto=format&fit=crop" alt="Cianotipia Hoja 2"></div>
+                    <!-- Repetición para completar el cilindro decagonal perfecto -->
+                    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1543160862-2a91f3eb3c7d?q=80&w=600&auto=format&fit=crop" alt="Cianotipia Hoja 1"></div>
+                    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1463320726281-696a485928c7?q=80&w=600&auto=format&fit=crop" alt="Cianotipia Helecho 1"></div>
+                    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1520301255226-bf5f1444d1ba?q=80&w=600&auto=format&fit=crop" alt="Cianotipia Monstera"></div>
+                    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=600&auto=format&fit=crop" alt="Cianotipia Rama"></div>
+                    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?q=80&w=600&auto=format&fit=crop" alt="Cianotipia Hoja 2"></div>
+                </div>
+                <div class="gallery-caption">Cianotipia Digital</div>
+            </div>
         </div>
 
-        <!-- PÁGINA: PROYECTOS -->
         <div id="proyectos" class="page">
             <section class="content-section">
                 <h2 class="content-title">Proyectos</h2>
-                <!-- 
-                ========================================================================
-                [ZONA EDITABLE - PROYECTOS]
-                
-                CÓMO AÑADIR NUEVAS TARJETAS:
-                Copia un bloque <div class="brand-card"...> completo y pégalo al final
-                de la clase "brands-grid". Asegúrate de asignarle un 'data-project' único.
-                
-                CÓMO REACTIVAR MODALES:
-                Busca en la sección de JavaScript (al final de este archivo) el evento de
-                clic para '.brand-card' y elimina la línea: "if (true) return; // TEMPORALMENTE DESACTIVADO"
-                
-                QUÉ PARTES PUEDEN EDITARSE: 
-                - El interior de la etiqueta 'brand-name' (puedes reemplazar el texto por <img> o <svg>).
-                - El texto de la etiqueta 'brand-category'.
-                
-                QUÉ PARTES NO DEBEN MODIFICARSE:
-                - Las clases estructurales ('brands-grid', 'brand-card').
-                - El contenedor general, espaciados y sus estilos CSS asociados.
-                ========================================================================
-                -->
                 <div class="brands-grid">
                     <div class="brand-card" data-project="aura">
-                        <!-- DÓNDE REEMPLAZAR EL TEXTO TEMPORAL POR UN SVG O INSERTAR FUTUROS LOGOTIPOS: -->
-                        <!-- Borra el <span> inferior y coloca aquí tu código <svg> o etiqueta <img src="..."> -->
                         <span class="brand-name">En proceso creativo</span>
                         <span class="brand-category">Identidad visual en desarrollo</span>
                     </div>
                     <div class="brand-card" data-project="neolith">
-                        <!-- DÓNDE REEMPLAZAR EL TEXTO TEMPORAL POR UN SVG O INSERTAR FUTUROS LOGOTIPOS: -->
                         <span class="brand-name">En proceso creativo</span>
                         <span class="brand-category">Identidad visual en desarrollo</span>
                     </div>
                     <div class="brand-card" data-project="kinetic">
-                        <!-- DÓNDE REEMPLAZAR EL TEXTO TEMPORAL POR UN SVG O INSERTAR FUTUROS LOGOTIPOS: -->
                         <span class="brand-name">En proceso creativo</span>
                         <span class="brand-category">Identidad visual en desarrollo</span>
                     </div>
                     <div class="brand-card" data-project="origen">
-                        <!-- DÓNDE REEMPLAZAR EL TEXTO TEMPORAL POR UN SVG O INSERTAR FUTUROS LOGOTIPOS: -->
                         <span class="brand-name">En proceso creativo</span>
                         <span class="brand-category">Identidad visual en desarrollo</span>
                     </div>
                     <div class="brand-card" data-project="lumina">
-                        <!-- DÓNDE REEMPLAZAR EL TEXTO TEMPORAL POR UN SVG O INSERTAR FUTUROS LOGOTIPOS: -->
                         <span class="brand-name">En proceso creativo</span>
                         <span class="brand-category">Identidad visual en desarrollo</span>
                     </div>
                     <div class="brand-card" data-project="nomad">
-                        <!-- DÓNDE REEMPLAZAR EL TEXTO TEMPORAL POR UN SVG O INSERTAR FUTUROS LOGOTIPOS: -->
                         <span class="brand-name">En proceso creativo</span>
                         <span class="brand-category">Identidad visual en desarrollo</span>
                     </div>
                     <div class="brand-card" data-project="vibe">
-                        <!-- DÓNDE REEMPLAZAR EL TEXTO TEMPORAL POR UN SVG O INSERTAR FUTUROS LOGOTIPOS: -->
                         <span class="brand-name">En proceso creativo</span>
                         <span class="brand-category">Identidad visual en desarrollo</span>
                     </div>
                     <div class="brand-card" data-project="terra">
-                        <!-- DÓNDE REEMPLAZAR EL TEXTO TEMPORAL POR UN SVG O INSERTAR FUTUROS LOGOTIPOS: -->
                         <span class="brand-name">En proceso creativo</span>
                         <span class="brand-category">Identidad visual en desarrollo</span>
                     </div>
                     <div class="brand-card" data-project="apex">
-                        <!-- DÓNDE REEMPLAZAR EL TEXTO TEMPORAL POR UN SVG O INSERTAR FUTUROS LOGOTIPOS: -->
                         <span class="brand-name">En proceso creativo</span>
                         <span class="brand-category">Identidad visual en desarrollo</span>
                     </div>
                 </div>
 
-                <!-- SECCIÓN DE HERRAMIENTAS / PATROCINADORES -->
                 <div class="sponsors-section">
                     <div class="sponsors-flex">
                         <div class="sponsor-item">
@@ -1523,7 +1468,7 @@
                                     </linearGradient>
                                 </defs>
                                 <path d="M12 2C12 2 12.5 8.5 19 10C12.5 11.5 12 18 12 18C12 18 11.5 11.5 5 10C11.5 8.5 12 2 12 2Z" fill="url(#gemini-grad)"/>
-                                <path d="M19 15C19 15 19.2 18 22 18.5C19.2 19 19 22 19 22C19 22 18.8 19 16 18.5C18.8 18 19 15 19 15Z" fill="url(#gemini-grad)"/>
+                                <path d="M19 15C19 15 19.2 18 22 18.5C19.2 19 22 19 22C19 22 18.8 19 16 18.5C18.8 18 19 15 19 15Z" fill="url(#gemini-grad)"/>
                             </svg>
                             <span>Gemini</span>
                         </div>
@@ -1540,37 +1485,13 @@
             </section>
         </div>
 
-        <!-- PÁGINA: RECURSOS -->
         <div id="recursos" class="page">
             <section class="content-section">
                 <h2 class="content-title">Recursos</h2>
                 <p style="opacity: 0.8; max-width: 650px; margin-bottom: 3rem; font-size: 1.15rem;">Herramientas, mockups y assets creados en nuestro estudio, compartidos para la comunidad creativa.</p>
-                <!-- 
-                ========================================================================
-                [ZONA EDITABLE - RECURSOS]
-                
-                CÓMO AÑADIR NUEVAS TARJETAS:
-                Copia un bloque <div class="card" style="cursor: default;">...</div> 
-                completo y pégalo dentro del contenedor "grid-layout".
-                
-                CÓMO REACTIVAR ENLACES:
-                Elimina la condición "onclick='return false;'" de la etiqueta <a> dentro 
-                de "card-actions" y reemplaza el atributo href="#" por tu URL real de descarga.
-                
-                QUÉ PARTES PUEDEN EDITARSE: 
-                - Los textos de los títulos <h3> y los párrafos descriptivos <p>.
-                - La URL del botón "Descargar" en la etiqueta <a>.
-                
-                QUÉ PARTES NO DEBEN MODIFICARSE:
-                - La estructura HTML de las animaciones internas (.gif-preview, 
-                  .preview-stationery, etc.)
-                - La maquetación y jerarquía de etiquetas de la tarjeta para evitar romper el CSS.
-                ========================================================================
-                -->
                 <div class="grid-layout">
                     <div class="card" style="cursor: default;">
                         <div class="gif-preview">
-                            <!-- [ZONA EDITABLE] Reemplaza el src con tu imagen final -->
                             <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=800&auto=format&fit=crop" alt="Cianotipia Botánica 1">
                         </div>
                         <h3>Próximamente</h3>
@@ -1579,7 +1500,6 @@
                     </div>
                     <div class="card" style="cursor: default;">
                         <div class="gif-preview">
-                            <!-- [ZONA EDITABLE] Reemplaza el src con tu imagen final -->
                             <img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?q=80&w=800&auto=format&fit=crop" alt="Textura Cian 2">
                         </div>
                         <h3>Próximamente</h3>
@@ -1588,7 +1508,6 @@
                     </div>
                     <div class="card" style="cursor: default;">
                         <div class="gif-preview">
-                            <!-- [ZONA EDITABLE] Reemplaza el src con tu imagen final -->
                             <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=800&auto=format&fit=crop" alt="Naturaleza Cian 3">
                         </div>
                         <h3>Próximamente</h3>
@@ -1599,10 +1518,9 @@
             </section>
         </div>
 
-        <!-- PÁGINA: CÓDIGO ABIERTO -->
         <div id="codigo-abierto" class="page">
             <section class="content-section">
-                <h2 class="content-title">Código Abierto</h2>
+                <h2 class="content-title">Generadores</h2>
                 <div class="grid-layout">
                     <div class="card" style="cursor: default;">
                         <div class="gif-preview"><span class="brand-placeholder" style="color:var(--text-color); font-weight:700;">&lt;Zeqel UI /&gt;</span></div>
@@ -1637,7 +1555,6 @@
                             <a href="https://zeqelmx.github.io/Fluid-/" target="_blank" class="action-btn primary">Ver Proyecto</a>
                         </div>
                     </div>
-                    <!-- [AGREGADO] Tarjeta para el Generador de Cianotipia -->
                     <div class="card" style="cursor: default;">
                         <div class="gif-preview">
                             <img src="https://i.imgur.com/3sFX01P.png" alt="Generador Cianotipia">
@@ -1653,7 +1570,6 @@
             </section>
         </div>
 
-        <!-- PÁGINA: CONTACTO -->
         <div id="contacto" class="page">
             <section class="content-section">
                 <h2 class="content-title">Iniciemos algo grande.</h2>
@@ -1681,20 +1597,19 @@
             </section>
         </div>
 
-        <!-- PÁGINA: PRIVACIDAD -->
         <div id="privacidad" class="page">
             <section class="content-section">
                 <h2 class="content-title">Política de Privacidad</h2>
                 <div class="legal-content">
                     <p class="last-updated">Última actualización: Junio de 2026</p>
-
+                    
                     <h3>1. IDENTIDAD DEL TITULAR</h3>
                     <p>Este sitio web es propiedad de ZEQEL Estudio Creativo (en adelante, "ZEQEL"). El presente sitio tiene carácter informativo y creativo, y está destinado a la exhibición de proyectos de diseño, portafolio profesional, recursos gráficos, herramientas, enlaces a proyectos de código abierto y contenido relacionado con la actividad creativa de ZEQEL.</p>
-
+                    
                     <h3>2. DATOS PERSONALES</h3>
                     <p>ZEQEL no solicita registros de usuarios, no ofrece cuentas de usuario, no procesa pagos y no recopila datos personales de forma directa a través de formularios propios.</p>
                     <p>La navegación por este sitio web puede realizarse libremente sin necesidad de proporcionar información personal.</p>
-
+                    
                     <h3>3. SERVICIOS DE TERCEROS Y ALOJAMIENTO</h3>
                     <p>Este sitio web puede estar alojado mediante servicios proporcionados por terceros, incluyendo plataformas como GitHub Pages u otros servicios de alojamiento web. Estos proveedores pueden recopilar información técnica necesaria para el funcionamiento de sus servicios, incluyendo, entre otros:</p>
                     <ul>
@@ -1715,10 +1630,12 @@
                         <li>Correo electrónico.</li>
                         <li>Otras redes sociales o plataformas de comunicación.</li>
                     </ul>
-                    <p>Al acceder a cualquiera de estos servicios, el usuario abandona este sitio web y pasa a estar sujeto a las políticas, términos y condiciones establecidos por cada plataforma. ZEQEL no controla ni es responsable de la recopilación, tratamiento o almacenamiento de datos realizados por dichos servicios externos.</p>
+                    <p>Al acceder a cualquiera de estos servicios, el usuario abandona este sitio web y pasa a estar sujeto a las políticas, términos y condiciones establecidos por cada plataforma.</p>
+                    <p>ZEQEL no controla ni es responsable de la recopilación, tratamiento o almacenamiento de datos realizados por dichos servicios externos.</p>
 
                     <h3>5. RECURSOS, DESCARGAS Y ENLACES EXTERNOS</h3>
-                    <p>Este sitio puede ofrecer enlaces a recursos gratuitos, herramientas, repositorios de código abierto, material educativo, archivos descargables o contenido alojado en plataformas externas. Dichos recursos pueden encontrarse alojados en servicios de terceros, incluyendo, entre otros:</p>
+                    <p>Este sitio puede ofrecer enlaces a recursos gratuitos, herramientas, repositorios de código abierto, material educativo, archivos descargables o contenido alojado en plataformas externas.</p>
+                    <p>Dichos recursos pueden encontrarse alojados en servicios de terceros, incluyendo, entre otros:</p>
                     <ul>
                         <li>GitHub.</li>
                         <li>Google Drive.</li>
@@ -1727,7 +1644,8 @@
                         <li>Plataformas de almacenamiento o distribución de archivos.</li>
                         <li>Sitios web de terceros.</li>
                     </ul>
-                    <p>ZEQEL no garantiza la disponibilidad permanente de estos recursos ni se responsabiliza por cambios, interrupciones, eliminación de contenido o modificaciones realizadas por terceros. El acceso y uso de cualquier recurso externo se realiza bajo la responsabilidad exclusiva del usuario.</p>
+                    <p>ZEQEL no garantiza la disponibilidad permanente de estos recursos ni se responsabiliza por cambios, interrupciones, eliminación de contenido o modificaciones realizadas por terceros.</p>
+                    <p>El acceso y uso de cualquier recurso externo se realiza bajo la responsabilidad exclusiva del usuario.</p>
 
                     <h3>6. PROYECTOS DE CÓDIGO ABIERTO</h3>
                     <p>Algunos contenidos publicados en este sitio pueden enlazar a proyectos de código abierto alojados en repositorios públicos. Cada proyecto puede estar sujeto a sus propias licencias, condiciones de uso y términos de distribución, los cuales deberán ser consultados directamente en el repositorio correspondiente.</p>
@@ -1739,7 +1657,8 @@
                     <p>ZEQEL adopta medidas razonables para mantener la seguridad e integridad de los contenidos publicados en este sitio. No obstante, ningún sistema conectado a Internet puede garantizar una seguridad absoluta, por lo que no puede asegurarse la ausencia total de riesgos derivados del uso de redes y servicios digitales.</p>
 
                     <h3>9. PROPIEDAD INTELECTUAL</h3>
-                    <p>Salvo que se indique expresamente lo contrario, los diseños, textos, imágenes, gráficos, logotipos, recursos originales y demás contenidos publicados en este sitio son propiedad de ZEQEL Estudio Creativo o se utilizan conforme a las licencias correspondientes. Queda prohibida su reproducción, distribución o modificación sin la autorización correspondiente o sin respetar las licencias aplicables.</p>
+                    <p>Salvo que se indique expresamente lo contrario, los diseños, textos, imágenes, gráficos, logotipos, recursos originales y demás contenidos publicados en este sitio son propiedad de ZEQEL Estudio Creativo o se utilizan conforme a las licencias correspondientes.</p>
+                    <p>Queda prohibida su reproducción, distribución o modificación sin la autorización correspondiente o sin respetar las licencias aplicables.</p>
 
                     <h3>10. MODIFICACIONES DE LA POLÍTICA DE PRIVACIDAD</h3>
                     <p>ZEQEL se reserva el derecho de modificar la presente Política de Privacidad en cualquier momento con el fin de adaptarla a cambios legales, técnicos o funcionales. Las modificaciones serán publicadas en esta misma página y entrarán en vigor desde el momento de su publicación.</p>
@@ -1750,13 +1669,12 @@
             </section>
         </div>
 
-        <!-- PÁGINA: TERMINOS -->
         <div id="terminos" class="page">
             <section class="content-section">
                 <h2 class="content-title">Términos y Condiciones</h2>
                 <div class="legal-content">
                     <p class="last-updated">Última actualización: Junio de 2026</p>
-
+                    
                     <h3>1. INFORMACIÓN GENERAL</h3>
                     <p>Este sitio web es propiedad y está gestionado por ZEQEL Estudio Creativo. ZEQEL es un proyecto creativo independiente dedicado al diseño, desarrollo y creación de recursos digitales.</p>
                     <p>El presente sitio web tiene como finalidad presentar proyectos creativos, mostrar trabajos de portafolio, compartir recursos relacionados con diseño gráfico, desarrollo, creatividad digital y proporcionar acceso a proyectos, herramientas y repositorios públicos.</p>
@@ -1897,12 +1815,12 @@
 
                     <h3>15. PROTECCIÓN DE CONTENIDO Y PROPIEDAD CREATIVA</h3>
                     <p>Todos los diseños, conceptos visuales, propuestas gráficas, identidades visuales, interfaces, recursos originales, proyectos creativos, código original, textos, documentación y demás contenidos publicados en este sitio son propiedad intelectual de ZEQEL Estudio Creativo, salvo indicación expresa en contrario.</p>
-                    <p>La publicación de trabajos, bocetos, conceptos, procesos creativos o proyectos en este sitio no implica la cesión de derechos de explotación, reproducción, distribución, modificación o uso comercial.</p>
+                    <p>La publicación de trabajos, bocetos, conceptos, procesos creativos o proyectos en este sitio no implica la cesión de derechos de explotación, reproducción, distribución, modification o uso comercial.</p>
                     <p>Queda prohibida la copia, reproducción, adaptación, comercialización o utilización de cualquier contenido original de este sitio con fines comerciales sin autorización previa y expresa de ZEQEL Estudio Creativo.</p>
                     <p>Asimismo, queda prohibido presentar como propios diseños, conceptos creativos, elementos gráficos, identidades visuales o proyectos desarrollados por ZEQEL.</p>
                     <p>La inspiración y referencia visual forman parte natural del proceso creativo; sin embargo, la reproducción sustancial o el uso no autorizado de obras originales podrá dar lugar a las acciones que correspondan conforme a la legislación aplicable en materia de propiedad intelectual y derechos de autor.</p>
                     <p>La ausencia de una marca registrada, patente o registro formal no implica renuncia alguna a los derechos de autor o de propiedad intelectual que correspondan a ZEQEL Estudio Creativo sobre las obras y contenidos originales publicados en este sitio.</p>
-                    
+
                     <p style="margin-top: 3rem; font-size: 0.85rem; opacity: 0.5; text-transform: uppercase; font-weight: 600; letter-spacing: 1px;">© 2026 ZEQEL Estudio Creativo. Todos los derechos reservados.</p>
                 </div>
             </section>
@@ -1910,7 +1828,6 @@
 
     </main>
 
-    <!-- Cajón de Detalle Inmersivo para Proyectos (Modales Líquidos) -->
     <div id="project-modal" class="modal-overlay">
         <div class="modal-container">
             <button class="modal-close" aria-label="Cerrar ventana">&times;</button>
@@ -1932,32 +1849,34 @@
     </div>
 
     <footer>
-        <div class="footer-brand">
-            <div class="footer-logo-wrapper">
-                <img src="https://raw.githubusercontent.com/eamxat/Imagenes-Zeqel/a7043297121f9d66c3d701d43d9fedd293209969/Zeqel%20Texto%20negro.svg" alt="Zeqel Texto" class="logo-black">
-                <img src="https://raw.githubusercontent.com/eamxat/Imagenes-Zeqel/a7043297121f9d66c3d701d43d9fedd293209969/Zeqel%20Texto%20negro.svg" alt="Zeqel Texto Color" class="logo-color">
-            </div>
-        </div>
-        <div class="footer-info">
-            <div class="footer-left">
-                <img src="https://raw.githubusercontent.com/eamxat/Imagenes-Zeqel/a7043297121f9d66c3d701d43d9fedd293209969/Tiger%20Isotipo.svg" alt="Tiger Isotipo" class="footer-tiger-icon">
-                <div class="copyright">
-                    &copy; Zeqel / Todos los derechos reservados.
-                </div>
-                <div class="legal-links">
-                    <a href="#privacidad">Política de privacidad</a><span>|</span><a href="#terminos">Términos y condiciones</a>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="footer-logo-wrapper">
+                    <img src="https://raw.githubusercontent.com/eamxat/Imagenes-Zeqel/a7043297121f9d66c3d701d43d9fedd293209969/Zeqel%20Texto%20negro.svg" alt="Zeqel Texto" class="logo-black">
+                    <img src="https://raw.githubusercontent.com/eamxat/Imagenes-Zeqel/a7043297121f9d66c3d701d43d9fedd293209969/Zeqel%20Texto%20negro.svg" alt="Zeqel Texto Color" class="logo-color">
                 </div>
             </div>
-            <div class="location">
-                <div id="real-time-clock" class="clock"></div>
-                Ensenada, B.C.<br>
-                México
+            <div class="footer-info">
+                <div class="footer-left">
+                    <div class="copyright">
+                        &copy; Zeqel / Todos los derechos reservados.
+                    </div>
+                    <div class="legal-links">
+                        <a href="#privacidad">Política de privacidad</a><span>|</span><a href="#terminos">Términos y condiciones</a>
+                    </div>
+                </div>
+                <div class="location" style="display: flex; flex-direction: column; align-items: flex-end; gap: 0.3rem;">
+                    <div class="coord-data" style="font-size: 0.55rem; letter-spacing: 3px; font-weight: 400; opacity: 0.9; display: flex; gap: 10px;">
+                        <span>31° 52' 18.72" N</span> | <span>116° 36' 24.72" W</span>
+                    </div>
+                    <div id="real-time-clock" class="clock" style="font-size: 0.75rem; letter-spacing: 2px; opacity: 0.8; font-variant-numeric: tabular-nums; margin: 0;"></div>
+                    <div style="font-size: 0.55rem; letter-spacing: 3px; font-weight: 400; opacity: 0.6; text-transform: uppercase;">Ensenada, México</div>
+                </div>
             </div>
         </div>
     </footer>
 
     <script>
-        // --- Prevención del menú contextual tradicional para proteger UI minimalista ---
         document.addEventListener('contextmenu', function(e) {
             e.preventDefault();
         });
@@ -1968,7 +1887,6 @@
             }
         });
 
-        // --- Grain canvas animado (cubre toda la web) ---
         const grainCanvas = document.getElementById('grain-canvas');
         const grainCtx = grainCanvas.getContext('2d');
 
@@ -1985,83 +1903,188 @@
             if (grainFrame % 4 === 0) {
                 const w = grainCanvas.width;
                 const h = grainCanvas.height;
-                const imageData = grainCtx.createImageData(w, h);
-                const data = imageData.data;
-                for (let i = 0; i < data.length; i += 4) {
-                    const v = Math.random() * 255 | 0;
-                    data[i]     = v;
-                    data[i + 1] = v;
-                    data[i + 2] = v;
-                    data[i + 3] = 255;
+                
+                if (w > 0 && h > 0) {
+                    const imageData = grainCtx.createImageData(w, h);
+                    const data = imageData.data;
+                    for (let i = 0; i < data.length; i += 4) {
+                        const v = Math.random() * 255 | 0;
+                        data[i]     = v;
+                        data[i + 1] = v;
+                        data[i + 2] = v;
+                        data[i + 3] = 255;
+                    }
+                    grainCtx.putImageData(imageData, 0, 0);
                 }
-                grainCtx.putImageData(imageData, 0, 0);
             }
             requestAnimationFrame(grainLoop);
         }
         grainLoop();
 
-        // --- Canvas de fondo animado (Luz líquida interactiva) ---
         const canvas = document.getElementById('bg-canvas');
-        const ctx = canvas.getContext('2d');
-        let time = 0;
+        const gl = canvas.getContext('webgl', { alpha: true });
 
-        // Variables de interacción (Seguimiento del puntero con suavizado Lerp)
-        let mouseX = window.innerWidth / 2;
-        let mouseY = window.innerHeight / 2;
-        let targetMouseX = window.innerWidth / 2;
-        let targetMouseY = window.innerHeight / 2;
-        
-        function resize() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-        
-        window.addEventListener('resize', resize);
-        resize();
+        if (gl) {
+            const vsSource = `
+                attribute vec2 a_position;
+                void main() {
+                    gl_Position = vec4(a_position, 0.0, 1.0);
+                }
+            `;
+            
+            const fsSource = `
+                precision highp float;
+                uniform vec2 u_resolution;
+                uniform float u_time;
+                uniform vec2 u_mouse;
+                uniform float u_scroll;
+                uniform float u_intensity;
 
-        // Registrar posición del mouse (o toques)
-        window.addEventListener('mousemove', (e) => {
-            targetMouseX = e.clientX;
-            targetMouseY = e.clientY;
-        });
+                vec3 permute(vec3 x) { return mod(((x*34.0)+1.0)*x, 289.0); }
+                float snoise(vec2 v){
+                    const vec4 C = vec4(0.211324865405187, 0.366025403784439, -0.577350269189626, 0.024390243902439);
+                    vec2 i  = floor(v + dot(v, C.yy) );
+                    vec2 x0 = v -   i + dot(i, C.xx);
+                    vec2 i1;
+                    i1 = (x0.x > x0.y) ? vec2(1.0, 0.0) : vec2(0.0, 1.0);
+                    vec4 x12 = x0.xyxy + C.xxzz;
+                    x12.xy -= i1;
+                    i = mod(i, 289.0);
+                    vec3 p = permute( permute( i.y + vec3(0.0, i1.y, 1.0 )) + i.x + vec3(0.0, i1.x, 1.0 ));
+                    vec3 m = max(0.5 - vec3(dot(x0,x0), dot(x12.xy,x12.xy), dot(x12.zw,x12.zw)), 0.0);
+                    m = m*m ;
+                    m = m*m ;
+                    vec3 x = 2.0 * fract(p * C.www) - 1.0;
+                    vec3 h = abs(x) - 0.5;
+                    vec3 ox = floor(x + 0.5);
+                    vec3 a0 = x - ox;
+                    m *= 1.79284291400159 - 0.85373472095314 * ( a0*a0 + h*h );
+                    vec3 g;
+                    g.x  = a0.x  * x0.x  + h.x  * x0.y;
+                    g.yz = a0.yz * x12.xz + h.yz * x12.yw;
+                    return 130.0 * dot(m, g);
+                }
 
-        window.addEventListener('touchmove', (e) => {
-            if (e.touches.length > 0) {
-                targetMouseX = e.touches[0].clientX;
-                targetMouseY = e.touches[0].clientY;
+                void main() {
+                    vec2 uv = gl_FragCoord.xy / u_resolution.xy;
+                    float aspect = u_resolution.x / u_resolution.y;
+                    vec2 p = uv;
+                    p.x *= aspect;
+
+                    vec2 mouse = vec2(u_mouse.x, u_resolution.y - u_mouse.y) / u_resolution.xy;
+                    vec2 m = mouse;
+                    m.x *= aspect;
+
+                    float mouseDist = distance(p, m);
+                    float interaction = exp(-mouseDist * 3.5) * u_intensity * (1.0 - u_scroll);
+
+                    vec2 warp = p * 1.5;
+                    warp += interaction * vec2(cos(u_time * 0.4 + p.y * 3.0), sin(u_time * 0.4 + p.x * 3.0));
+                    
+                    warp.y += u_time * 0.05;
+                    warp.x -= u_time * 0.02;
+
+                    float n1 = snoise(warp + u_time * 0.04);
+                    float n2 = snoise(warp * 1.6 - u_time * 0.08 + n1 * 0.8);
+                    float n3 = snoise(warp * 2.2 + u_time * 0.05 + n2 * 0.8);
+
+                    vec3 color1 = vec3(0.000, 0.043, 0.094); 
+                    vec3 color2 = vec3(0.000, 0.122, 0.247); 
+                    vec3 color3 = vec3(0.000, 0.169, 0.357); 
+                    vec3 color4 = vec3(0.039, 0.302, 0.549); 
+                    vec3 color5 = vec3(0.369, 0.663, 1.000); 
+
+                    float f = n3 * 0.5 + 0.5;
+                    float rise = smoothstep(-0.2, 0.8, (1.0 - uv.y) * f);
+                    
+                    vec3 color = mix(color1, color2, smoothstep(0.0, 0.3, rise));
+                    color = mix(color, color3, smoothstep(0.2, 0.6, rise));
+                    color = mix(color, color4, smoothstep(0.45, 0.85, rise));
+                    color = mix(color, color5, smoothstep(0.75, 1.0, rise));
+
+                    float alpha = clamp((1.0 - u_scroll * 1.5) * smoothstep(1.0, -0.3, uv.y), 0.0, 1.0);
+                    
+                    gl_FragColor = vec4(color * alpha, alpha);
+                }
+            `;
+
+            function createShader(gl, type, source) {
+                const shader = gl.createShader(type);
+                gl.shaderSource(shader, source);
+                gl.compileShader(shader);
+                return shader;
             }
-        });
 
-        function animate() {
-            time += 0.002;
-            
-            // Lerp para suavidad orgánica
-            mouseX += (targetMouseX - mouseX) * 0.045;
-            mouseY += (targetMouseY - mouseY) * 0.045;
+            const shaderProgram = gl.createProgram();
+            gl.attachShader(shaderProgram, createShader(gl, gl.VERTEX_SHADER, vsSource));
+            gl.attachShader(shaderProgram, createShader(gl, gl.FRAGMENT_SHADER, fsSource));
+            gl.linkProgram(shaderProgram);
+            gl.useProgram(shaderProgram);
 
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            const positionBuffer = gl.createBuffer();
+            gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+            gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, -1,1, 1,-1, 1,1]), gl.STATIC_DRAW);
             
-            // Variaciones ondulatorias sutiles añadidas al cursor
-            const xOffset = Math.sin(time) * (canvas.width * 0.05);
-            const yOffset = Math.cos(time * 0.8) * (canvas.height * 0.05);
-            
-            const centerX = mouseX + xOffset;
-            const centerY = mouseY + yOffset;
-            const radius = Math.max(canvas.width, canvas.height) * 0.58;
-            
-            const gradient = ctx.createRadialGradient(
-                centerX, centerY, 0, 
-                centerX, centerY, radius
-            );
-            
-            gradient.addColorStop(0, 'rgba(115, 194, 251, 0.22)');
-            gradient.addColorStop(0.4, 'rgba(115, 194, 251, 0.08)');
-            gradient.addColorStop(1, 'rgba(244, 239, 234, 0)');
-            
-            ctx.fillStyle = gradient;
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            
-            requestAnimationFrame(animate);
+            const positionLocation = gl.getAttribLocation(shaderProgram, "a_position");
+            gl.enableVertexAttribArray(positionLocation);
+            gl.vertexAttribPointer(positionLocation, 2, gl.FLOAT, false, 0, 0);
+
+            const uResolution = gl.getUniformLocation(shaderProgram, "u_resolution");
+            const uTime = gl.getUniformLocation(shaderProgram, "u_time");
+            const uMouse = gl.getUniformLocation(shaderProgram, "u_mouse");
+            const uScroll = gl.getUniformLocation(shaderProgram, "u_scroll");
+            const uIntensity = gl.getUniformLocation(shaderProgram, "u_intensity");
+
+            let targetMouseX = window.innerWidth / 2;
+            let targetMouseY = window.innerHeight / 2;
+            let mouseX = targetMouseX;
+            let mouseY = targetMouseY;
+            let time = 0;
+            let isMobile = window.innerWidth <= 768;
+
+            function resize() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+                isMobile = window.innerWidth <= 768;
+                gl.viewport(0, 0, canvas.width, canvas.height);
+            }
+            window.addEventListener('resize', resize);
+            resize();
+
+            window.addEventListener('mousemove', (e) => {
+                targetMouseX = e.clientX;
+                targetMouseY = e.clientY;
+            });
+
+            window.addEventListener('touchmove', (e) => {
+                if (e.touches.length > 0) {
+                    targetMouseX = e.touches[0].clientX;
+                    targetMouseY = e.touches[0].clientY;
+                }
+            }, { passive: true });
+
+            function render(now) {
+                mouseX += (targetMouseX - mouseX) * 0.05;
+                mouseY += (targetMouseY - mouseY) * 0.05;
+                
+                let scrollProgress = Math.min(window.scrollY / window.innerHeight, 1.0);
+
+                if (scrollProgress < 1.0 && canvas.width > 0 && canvas.height > 0) {
+                    time = now * 0.001;
+                    gl.uniform2f(uResolution, canvas.width, canvas.height);
+                    gl.uniform1f(uTime, time);
+                    gl.uniform2f(uMouse, mouseX, mouseY);
+                    gl.uniform1f(uScroll, scrollProgress);
+                    gl.uniform1f(uIntensity, isMobile ? 0.15 : 0.3);
+                    gl.drawArrays(gl.TRIANGLES, 0, 6);
+                } else {
+                    gl.clearColor(0,0,0,0);
+                    gl.clear(gl.COLOR_BUFFER_BIT);
+                }
+                
+                requestAnimationFrame(render);
+            }
+            requestAnimationFrame(render);
         }
         
         function updateClock() {
@@ -2078,71 +2101,80 @@
         }
         
         window.onload = function() {
-            animate();
             updateClock();
             setInterval(updateClock, 1000);
         };
 
-        // --- Base de Datos Local de Proyectos para el Visor Inmersivo ---
         const projectsDatabase = {
             aura: {
                 title: "Aura Editorial",
                 category: "Editorial & Design",
                 description: "Una identidad táctil y refinada para una editorial independiente enfocada en filosofía minimalista. Aura celebra los márgenes amplios, la tipografía serif silenciosa y los sustratos orgánicos crudos.",
-                palette: ["#1A1C20", "#E3DEC3", "#697268", "#F4EFEA"]
+                palette: ["#15324D", "#E9F2F9", "#6BA8D1", "#2A5A84"]
             },
             neolith: {
                 title: "Neolith Skin",
                 category: "Skincare & Clean Beauty",
                 description: "Marca de cosmética premium basada en principios de transparencia botánica. La identidad visual se apoya en envases de vidrio soplado pesado, líneas de corte brutalistas y un matiz verde musgo traslúcido.",
-                palette: ["#4F5D54", "#D1C7BD", "#EFECE9", "#242525"]
+                palette: ["#15324D", "#E9F2F9", "#6BA8D1", "#2A5A84"]
             },
             kinetic: {
                 title: "Kinetic Studio",
                 category: "Architecture Studio",
                 description: "Estudio de arquitectura de vanguardia en la península. Creamos una marca líquida que cambia según la luz de la estación, estructurada por geometrías finas, retículas cinéticas y una tipografía mono-espaciada.",
-                palette: ["#0A0A0B", "#7F8A94", "#EBEAEA", "#1A7392"]
+                palette: ["#15324D", "#E9F2F9", "#6BA8D1", "#2A5A84"]
             },
             origen: {
                 title: "Origen Coffee",
                 category: "Specialty Coffee",
                 description: "Origen redefine la trazabilidad del café de especialidad. La identidad celebra el color de la tierra cruda con un logotipo caligráfico minimalista y texturas táctiles hechas a base de pulpa residual de café.",
-                palette: ["#45322E", "#CDBFA8", "#D96570", "#FAF8F5"]
+                palette: ["#15324D", "#E9F2F9", "#6BA8D1", "#2A5A84"]
             },
             lumina: {
                 title: "Lumina Lighting",
                 category: "Curated Lighting",
                 description: "Curaduría artística de diseño lumínico. La marca funciona como un juego de sombras y luces proyectadas, utilizando materiales de latón cepillado y un logotipo interactivo que responde a la intensidad de luz ambiente.",
-                palette: ["#0F1115", "#D4AF37", "#9E9E9E", "#F4EFEA"]
+                palette: ["#15324D", "#E9F2F9", "#6BA8D1", "#2A5A84"]
             },
             nomad: {
                 title: "Nomad Slow Travel",
                 category: "Slow Travel Gear",
                 description: "Equipamiento de viaje conceptual y perdurable. La marca abraza el minimalismo utilitario de alto rendimiento técnico, utilizando paletas arenosas, empaques planos de cartón mineral e ilustraciones de topología.",
-                palette: ["#3D3A37", "#8A817C", "#BCB8B1", "#F4EFEA"]
+                palette: ["#15324D", "#E9F2F9", "#6BA8D1", "#2A5A84"]
             },
             vibe: {
                 title: "Vibe Records",
                 category: "Sonic Art Agency",
                 description: "Sello de curaduría sonora y artes abstractas. El lenguaje de la marca es de un minimalismo estricto e icónico, dominado por el contraste puro, ritmos geométricos y vibraciones de color cian ácido sobre negro.",
-                palette: ["#000000", "#73C2FB", "#EBECEE", "#1A7392"]
+                palette: ["#15324D", "#E9F2F9", "#6BA8D1", "#2A5A84"]
             },
             terra: {
                 title: "Terra Wine",
                 category: "Sustainable Wine",
                 description: "Vino natural biodinámico de uva silvestre. Creamos un sistema visual limpio que prioriza el soplado artesanal de la botella y una etiqueta sin adhesivos sostenida mediante hilos de cáñamo natural y lacre.",
-                palette: ["#2C1A1D", "#8B575C", "#D9C5B2", "#F4EFEA"]
+                palette: ["#15324D", "#E9F2F9", "#6BA8D1", "#2A5A84"]
             },
             apex: {
                 title: "Apex Tech",
                 category: "Decentralized Tech",
                 description: "La capa visual del futuro de los protocolos distribuidos de red. Diseñamos un lenguaje de bloques transparentes, vidrios virtuales refractantes y tipografía técnica de legibilidad milimétrica.",
-                palette: ["#0D0E10", "#1A7392", "#73C2FB", "#ECEEF1"]
+                palette: ["#15324D", "#E9F2F9", "#6BA8D1", "#2A5A84"]
             }
         };
 
-        // --- Navegación SPA & Sistema de Interacciones ---
         document.addEventListener('DOMContentLoaded', () => {
+            const revealElements = document.querySelectorAll('.scroll-reveal, .scroll-reveal-isolated');
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+
+            revealElements.forEach(el => revealObserver.observe(el));
+
             const navLinks = document.querySelectorAll('.nav-links a, .legal-links a');
             const logo = document.querySelector('.logo-container');
             const pages = document.querySelectorAll('.page');
@@ -2150,7 +2182,6 @@
             const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
             const navLinksContainer = document.querySelector('.nav-links');
 
-            // Modal/Drawer elements
             const modalOverlay = document.getElementById('project-modal');
             const modalClose = document.querySelector('.modal-close');
             const modalTitle = document.getElementById('modal-project-title');
@@ -2158,35 +2189,14 @@
             const modalDesc = document.getElementById('modal-project-description');
             const modalPalette = document.getElementById('modal-project-palette');
 
-            // Efecto máquina de escribir
-            const twElement = document.getElementById('typewriter-text');
-            if (twElement) {
-                const text = "Porque una marca no se trata solo de cómo se ve, sino de cómo se siente.";
-                twElement.innerHTML = '';
-                twElement.classList.add('typewriter-cursor');
-                let i = 0;
-                let isDeleting = false;
-                
-                setTimeout(() => {
-                    function typeWriterLoop() {
-                        if (!isDeleting && i < text.length) {
-                            twElement.innerHTML = text.substring(0, i + 1);
-                            i++;
-                            setTimeout(typeWriterLoop, 35);
-                        } else if (isDeleting && i > 0) {
-                            twElement.innerHTML = text.substring(0, i - 1);
-                            i--;
-                            setTimeout(typeWriterLoop, 20);
-                        } else if (!isDeleting && i === text.length) {
-                            isDeleting = true;
-                            setTimeout(typeWriterLoop, 3000);
-                        } else if (isDeleting && i === 0) {
-                            isDeleting = false;
-                            setTimeout(typeWriterLoop, 1000);
-                        }
-                    }
-                    typeWriterLoop();
-                }, 1400); 
+            // --- Lógica del Hero Interactivo ---
+            const heroBtn = document.getElementById('hero-trigger-btn');
+            const heroText = document.getElementById('hero-hidden-text');
+
+            if (heroBtn && heroText) {
+                heroBtn.addEventListener('click', () => {
+                    heroText.classList.toggle('active');
+                });
             }
 
             function navigateTo(pageId) {
@@ -2203,7 +2213,6 @@
                 }
             }
 
-            // Lógica menú móvil
             if (mobileMenuBtn && navLinksContainer) {
                 mobileMenuBtn.addEventListener('click', () => {
                     mobileMenuBtn.classList.toggle('active');
@@ -2228,7 +2237,6 @@
                 });
             }
 
-            // Copiar enlaces al portapapeles de manera segura
             copyButtons.forEach(btn => {
                 btn.addEventListener('click', () => {
                     const url = btn.getAttribute('data-url');
@@ -2252,28 +2260,23 @@
                 });
             });
 
-            // --- Lógica interactiva de Video Hover ---
             const videoHoverContainers = document.querySelectorAll('.video-hover-container');
             videoHoverContainers.forEach(container => {
                 const video = container.querySelector('video');
                 if (video) {
                     container.addEventListener('mouseenter', () => {
-                        // Iniciar video al pasar el cursor
                         video.play().catch(err => console.log('El autoplay fue prevenido:', err));
                     });
                     container.addEventListener('mouseleave', () => {
-                        // Pausar y regresar al inicio al retirar el cursor
                         video.pause();
                         video.currentTime = 0;
                     });
                 }
             });
 
-            // --- Lógica del Cajón Inmersivo de Detalle (Modal) ---
             const brandCards = document.querySelectorAll('.brand-card');
             brandCards.forEach(card => {
                 card.addEventListener('click', () => {
-                    // [COMENTARIO: Para reactivar los modales, elimina o comenta la siguiente línea]
                     if (true) return; // TEMPORALMENTE DESACTIVADO
 
                     const projectKey = card.getAttribute('data-project');
@@ -2284,7 +2287,6 @@
                         modalCategory.textContent = projectData.category;
                         modalDesc.textContent = projectData.description;
 
-                        // Limpiar y crear la paleta de colores
                         modalPalette.innerHTML = '';
                         projectData.palette.forEach(color => {
                             const bubble = document.createElement('div');
@@ -2294,7 +2296,6 @@
                             modalPalette.appendChild(bubble);
                         });
 
-                        // Abrir el cajón inmersivo
                         modalOverlay.classList.add('active');
                     }
                 });
@@ -2311,15 +2312,224 @@
                     modalOverlay.classList.remove('active');
                 }
             });
+
+            const lightEnvironment = document.getElementById('prussian-light-environment');
+            
+            window.addEventListener('scroll', () => {
+                const scrollY = window.scrollY;
+                const heroHeight = window.innerHeight * 0.6;
+                
+                if (lightEnvironment) {
+                    if (scrollY > heroHeight) {
+                        lightEnvironment.classList.add('active');
+                    } else {
+                        lightEnvironment.classList.remove('active');
+                    }
+                }
+            }, { passive: true });
         });
 
-        // --- Liquid Glass Scroll Effect ---
         const mainNav = document.querySelector('nav');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 15) {
                 mainNav.classList.add('nav-scrolled');
             } else {
                 mainNav.classList.remove('nav-scrolled');
+            }
+        });
+
+        window.addEventListener('load', () => {
+            const rbCanvas = document.getElementById('prussianLightCanvas');
+            if (!rbCanvas) {
+                console.warn('Canvas prussianLightCanvas no encontrado');
+                return;
+            }
+
+            const glRb = rbCanvas.getContext('webgl', { alpha: true });
+
+            if (glRb) {
+                const vsSource = `
+                    attribute vec2 a_position;
+                    void main() {
+                        gl_Position = vec4(a_position, 0.0, 1.0);
+                    }
+                `;
+                
+                const fsSource = `
+                    precision highp float;
+                    uniform vec2 u_resolution;
+                    uniform float u_time;
+                    uniform float u_scroll;
+                    uniform vec2 u_mouse;
+
+                    // Classic 3D noise by Inigo Quilez
+                    vec4 permute(vec4 x){return mod(((x*34.0)+1.0)*x, 289.0);}
+                    vec4 taylorInvSqrt(vec4 r){return 1.79284291400159 - 0.85373472095314 * r;}
+
+                    float snoise(vec3 v){ 
+                        const vec2  C = vec2(1.0/6.0, 1.0/3.0) ;
+                        const vec4  D = vec4(0.0, 0.5, 1.0, 2.0);
+
+                        vec3 i  = floor(v + dot(v, C.yyy) );
+                        vec3 x0 = v - i + dot(i, C.xxx) ;
+
+                        vec3 g = step(x0.yzx, x0.xyz);
+                        vec3 l = 1.0 - g;
+                        vec3 i1 = min( g.xyz, l.zxy );
+                        vec3 i2 = max( g.xyz, l.zxy );
+
+                        vec3 x1 = x0 - i1 + 1.0 * C.xxx;
+                        vec3 x2 = x0 - i2 + 2.0 * C.xxx;
+                        vec3 x3 = x0 - 1.0 + 3.0 * C.xxx;
+
+                        i = mod(i, 289.0 ); 
+                        vec4 p = permute( permute( permute( 
+                                   i.z + vec4(0.0, i1.z, i2.z, 1.0 ))
+                                 + i.y + vec4(0.0, i1.y, i2.y, 1.0 )) 
+                                 + i.x + vec4(0.0, i1.x, i2.x, 1.0 ));
+
+                        float n_ = 1.0/7.0;
+                        vec3  ns = n_ * D.wyz - D.xzx;
+
+                        vec4 j = p - 49.0 * floor(p * ns.z *ns.z);
+
+                        vec4 x_ = floor(j * ns.z);
+                        vec4 y_ = floor(j - 7.0 * x_ );
+
+                        vec4 x = x_ *ns.x + ns.yyyy;
+                        vec4 y = y_ *ns.x + ns.yyyy;
+                        vec4 h = 1.0 - abs(x) - abs(y);
+
+                        vec4 b0 = vec4( x.xy, y.xy );
+                        vec4 b1 = vec4( x.zw, y.zw );
+
+                        vec4 s0 = floor(b0)*2.0 + 1.0;
+                        vec4 s1 = floor(b1)*2.0 + 1.0;
+                        vec4 sh = -step(h, vec4(0.0));
+
+                        vec4 a0 = b0.xzyw + s0.xzyw*sh.xxyy ;
+                        vec4 a1 = b1.xzyw + s1.xzyw*sh.zzww ;
+
+                        vec3 p0 = vec3(a0.xy,h.x);
+                        vec3 p1 = vec3(a0.zw,h.y);
+                        vec3 p2 = vec3(a1.xy,h.z);
+                        vec3 p3 = vec3(a1.zw,h.w);
+
+                        vec4 norm = taylorInvSqrt(vec4(dot(p0,p0), dot(p1,p1), dot(p2, p2), dot(p3,p3)));
+                        p0 *= norm.x;
+                        p1 *= norm.y;
+                        p2 *= norm.z;
+                        p3 *= norm.w;
+
+                        vec4 m = max(0.5 - vec4(dot(x0,x0), dot(x1,x1), dot(x2,x2), dot(x3,x3)), 0.0);
+                        m = m * m;
+                        return 42.0 * dot( m*m, vec4( dot(p0,x0), dot(p1,x1), dot(p2,x2), dot(p3,x3) ) );
+                    }
+
+                    void main() {
+                        vec2 uv = gl_FragCoord.xy / u_resolution.xy;
+                        float aspect = u_resolution.x / u_resolution.y;
+                        vec2 p = uv;
+                        p.x *= aspect;
+
+                        // Adaptar cursor para entorno WebGL (Invertir eje Y)
+                        vec2 mousePos = vec2(u_mouse.x, 1.0 - u_mouse.y);
+                        mousePos.x *= aspect;
+                        
+                        // Parallax sutil del cursor (reacción fluida y no invasiva)
+                        p += (mousePos - vec2(0.5 * aspect, 0.5)) * 0.12;
+                        p.y += u_scroll * 0.0002;
+
+                        float t = u_time * 0.12;
+
+                        // Domain warping para el efecto líquido (blobs orgánicos deformándose)
+                        vec2 warp = p;
+                        warp.x += snoise(vec3(p * 1.5, t)) * 0.4;
+                        warp.y += snoise(vec3(p * 1.5 + vec2(2.4, 1.3), t * 1.1)) * 0.4;
+
+                        // Generación de blobs líquidos que se fusionan suavemente
+                        float f1 = snoise(vec3(warp * 1.8, t * 0.8));
+                        float f2 = snoise(vec3(warp * 2.2 - vec2(3.1, 4.5), t * 1.2));
+                        float field = (f1 + f2) * 0.5 + 0.5; // Rango 0.0 a 1.0
+
+                        // PALETA OBLIGATORIA ESTRICTA (Azul Prusia líquido a Cian)
+                        vec3 bgDark = vec3(0.000, 0.043, 0.094); // #000B18
+                        vec3 colDeep = vec3(0.000, 0.122, 0.247); // #001F3F
+                        vec3 colLight = vec3(0.039, 0.302, 0.549); // #0A4D8C
+                        vec3 colAccent = vec3(0.369, 0.663, 1.000); // #5EA9FF
+
+                        // Mezcla continua y muy suave de los blobs (liquid gradient puro)
+                        vec3 color = bgDark;
+                        color = mix(color, colDeep, smoothstep(0.1, 0.45, field));
+                        color = mix(color, colLight, smoothstep(0.4, 0.75, field));
+                        color = mix(color, colAccent, smoothstep(0.7, 1.0, field));
+
+                        // Respiración global sutil
+                        color *= 0.95 + 0.05 * sin(u_time * 0.4);
+                        
+                        gl_FragColor = vec4(color, 1.0);
+                    }
+                `;
+
+                function createShader(gl, type, source) {
+                    const shader = gl.createShader(type);
+                    gl.shaderSource(shader, source);
+                    gl.compileShader(shader);
+                    return shader;
+                }
+
+                const programRb = glRb.createProgram();
+                glRb.attachShader(programRb, createShader(glRb, glRb.VERTEX_SHADER, vsSource));
+                glRb.attachShader(programRb, createShader(glRb, glRb.FRAGMENT_SHADER, fsSource));
+                glRb.linkProgram(programRb);
+                glRb.useProgram(programRb);
+
+                const positionBufferRb = glRb.createBuffer();
+                glRb.bindBuffer(glRb.ARRAY_BUFFER, positionBufferRb);
+                glRb.bufferData(glRb.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, -1,1, 1,-1, 1,1]), glRb.STATIC_DRAW);
+                
+                const positionLocationRb = glRb.getAttribLocation(programRb, "a_position");
+                glRb.enableVertexAttribArray(positionLocationRb);
+                glRb.vertexAttribPointer(positionLocationRb, 2, glRb.FLOAT, false, 0, 0);
+
+                const uResolutionRb = glRb.getUniformLocation(programRb, "u_resolution");
+                const uTimeRb = glRb.getUniformLocation(programRb, "u_time");
+                const uScrollRb = glRb.getUniformLocation(programRb, "u_scroll");
+                const uMouseRb = glRb.getUniformLocation(programRb, "u_mouse");
+
+                let targetMouseXRb = 0.5;
+                let targetMouseYRb = 0.5;
+                let currentMouseXRb = 0.5;
+                let currentMouseYRb = 0.5;
+
+                window.addEventListener('mousemove', (e) => {
+                    targetMouseXRb = e.clientX / window.innerWidth;
+                    targetMouseYRb = e.clientY / window.innerHeight;
+                });
+
+                function renderRb(now) {
+                    const dpr = window.devicePixelRatio || 1;
+                    const w = Math.floor(window.innerWidth * dpr);
+                    const h = Math.floor(window.innerHeight * dpr);
+                    if (rbCanvas.width !== w || rbCanvas.height !== h) {
+                        rbCanvas.width = w;
+                        rbCanvas.height = h;
+                        glRb.viewport(0, 0, rbCanvas.width, rbCanvas.height);
+                    }
+                    
+                    glRb.useProgram(programRb);
+                    glRb.uniform2f(uResolutionRb, window.innerWidth, window.innerHeight);
+                    glRb.uniform1f(uTimeRb, now * 0.001);
+                    glRb.uniform1f(uScrollRb, window.scrollY);
+                    
+                    currentMouseXRb += (targetMouseXRb - currentMouseXRb) * 0.05;
+                    currentMouseYRb += (targetMouseYRb - currentMouseYRb) * 0.05;
+                    glRb.uniform2f(uMouseRb, currentMouseXRb, currentMouseYRb);
+                    
+                    glRb.drawArrays(glRb.TRIANGLES, 0, 6);
+                    requestAnimationFrame(renderRb);
+                }
+                requestAnimationFrame(renderRb);
             }
         });
     </script>
