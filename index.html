@@ -315,6 +315,41 @@
             transform: translateY(-8px) rotate(-45deg);
         }
 
+        .nav-links {
+            position: fixed;
+            right: clamp(1.5rem, 4vw, 4rem);
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: clamp(1.5rem, 3.5vh, 4rem);
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: clamp(0.6rem, 1vh, 0.65rem);
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            opacity: 0.35;
+            transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+            white-space: nowrap;
+            padding: 0.5rem 0;
+        }
+
+        /* Enlaces más oscuros/gruesos y coloreados en azul al pasar el cursor */
+        .nav-links a:hover {
+            opacity: 1;
+            color: var(--accent-blue);
+            font-weight: 900;
+            letter-spacing: 7px;
+        }
+
         .hero {
             height: 100vh;
             height: 100dvh;
@@ -355,13 +390,20 @@
             height: auto;
             margin: 2rem auto 2.5rem auto; 
             display: block;
-            filter: drop-shadow(0 0 25px rgba(10, 77, 140, 0.5));
+            filter: drop-shadow(0 0 25px rgba(10, 77, 140, 0.5)) brightness(1);
             cursor: pointer;
-            transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            transition: transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1), filter 2.5s ease-in-out;
+            animation: heroZenFloat 6s ease-in-out infinite;
+        }
+
+        @keyframes heroZenFloat {
+            0%, 100% { translate: 0 0; }
+            50% { translate: 0 -8px; }
         }
 
         .hero-tiger:hover {
-            transform: scale(1.05);
+            transform: scale(1.03);
+            filter: drop-shadow(0 0 35px rgba(94, 169, 255, 0.3)) brightness(1.03);
         }
 
         .unified-text-container {
@@ -951,6 +993,43 @@
             font-weight: 600;
         }
 
+        .main-logo-wrapper {
+            position: absolute;
+            top: 1.5rem;
+            left: clamp(1.5rem, 4vw, 4rem);
+            width: clamp(90px, 10vw, 120px);
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        .main-logo-wrapper img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .logo-black {
+            transition: opacity 0.3s ease;
+            filter: brightness(0) invert(1);
+        }
+
+        .logo-color {
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            filter: invert(65%) sepia(21%) saturate(1512%) hue-rotate(167deg) brightness(97%) contrast(90%);
+            transition: opacity 0.3s ease;
+        }
+
+        .main-logo-wrapper:hover .logo-black {
+            opacity: 0;
+        }
+
+        .main-logo-wrapper:hover .logo-color {
+            opacity: 1;
+        }
+
         footer {
             padding: 28rem 0 3rem; /* Textos del footer empujados aún más hacia abajo */
             border-top: none;
@@ -971,46 +1050,6 @@
             flex-direction: column;
             gap: 4rem;
             margin-top: 2rem;
-        }
-
-        .footer-brand {
-            display: flex;
-            justify-content: center;
-        }
-
-        .footer-logo-wrapper {
-            position: relative;
-            width: 100%;
-            max-width: 300px;
-            cursor: pointer;
-        }
-
-        .footer-logo-wrapper img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .logo-black {
-            transition: opacity 0.3s ease;
-            filter: brightness(0) invert(1);
-        }
-
-        .logo-color {
-            position: absolute;
-            top: 0;
-            left: 0;
-            opacity: 0;
-            filter: invert(65%) sepia(21%) saturate(1512%) hue-rotate(167deg) brightness(97%) contrast(90%);
-            transition: opacity 0.3s ease;
-        }
-
-        .footer-logo-wrapper:hover .logo-black {
-            opacity: 0;
-        }
-
-        .footer-logo-wrapper:hover .logo-color {
-            opacity: 1;
         }
 
         .footer-info {
@@ -1232,6 +1271,7 @@
                 transform: none;
                 font-size: 0.85rem;
                 letter-spacing: 2px;
+                padding: 0;
             }
             .nav-links a:hover {
                 letter-spacing: 2px;
@@ -1297,10 +1337,11 @@
             .gallery-item:nth-child(9) { transform: rotateY(288deg) translateZ(250px); }
             .gallery-item:nth-child(10) { transform: rotateY(324deg) translateZ(250px); }
             
-            .footer-logo-wrapper {
-                max-width: 220px;
-                margin: 0 auto;
+            .main-logo-wrapper {
+                top: 1rem;
+                left: 5%;
             }
+
             .footer-info {
                 flex-direction: column;
                 align-items: center;
@@ -1376,7 +1417,14 @@
     <main id="main-content">
         <div id="inicio" class="page active">
             <section class="hero">
+                <!-- ⬇️ INSTRUCCIÓN: Coloca aquí tu URL o archivo directo (ej: "logo.svg" o enlace de GitHub) dentro del atributo src="..." ⬇️ -->
+                <div class="main-logo-wrapper">
+                    <img src="https://raw.githubusercontent.com/eamxat/Imagenes-Zeqel/a7043297121f9d66c3d701d43d9fedd293209969/Zeqel%20Texto%20negro.svg" alt="Zeqel Texto" class="logo-black">
+                    <img src="https://raw.githubusercontent.com/eamxat/Imagenes-Zeqel/a7043297121f9d66c3d701d43d9fedd293209969/Zeqel%20Texto%20negro.svg" alt="Zeqel Texto Color" class="logo-color">
+                </div>
+
                 <div class="hero-content">
+                    <!-- ⬇️ INSTRUCCIÓN: Coloca aquí tu URL o archivo directo (ej: "isotipo.svg" o enlace de GitHub) dentro del atributo src="..." ⬇️ -->
                     <img src="https://raw.githubusercontent.com/eamxat/Imagenes-Zeqel/25748ede8c035f60817864ecee3360ab78b03d55/Isotipo%20Zeqel%20blanco.svg" alt="Zeqel Isotipo" class="hero-tiger scroll-reveal" id="hero-trigger-btn" style="transition-delay: 0ms;">
                     
                     <div class="unified-text-container" id="hero-hidden-text">
@@ -1389,6 +1437,7 @@
             <!-- NUEVA GALERÍA FLOTANTE (ESTILO CIANOTIPIA - MOVIDA AL INICIO) -->
             <div class="floating-gallery-wrapper">
                 <div class="gallery-track">
+                    <!-- ⬇️ INSTRUCCIÓN: Reemplaza estos enlaces en 'src="..."' por tus archivos locales (ej: "gallery1.jpg") o URLs de GitHub ⬇️ -->
                     <!-- Imágenes de Cianotipia Botánica (Unsplash) -->
                     <div class="gallery-item"><img src="https://images.unsplash.com/photo-1543160862-2a91f3eb3c7d?q=80&w=600&auto=format&fit=crop" alt="Cianotipia Hoja 1"></div>
                     <div class="gallery-item"><img src="https://images.unsplash.com/photo-1463320726281-696a485928c7?q=80&w=600&auto=format&fit=crop" alt="Cianotipia Helecho 1"></div>
@@ -1450,6 +1499,7 @@
 
                 <div class="sponsors-section">
                     <div class="sponsors-flex">
+                        <!-- ⬇️ INSTRUCCIÓN: Reemplaza estos enlaces en 'src="..."' por tus iconos/imágenes locales o URLs de GitHub ⬇️ -->
                         <div class="sponsor-item">
                             <img src="https://raw.githubusercontent.com/eamxat/Imagenes-Zeqel/refs/heads/main/icons8-corel-draw-67.png" alt="CorelDraw">
                             <span>CorelDraw</span>
@@ -1489,6 +1539,7 @@
             <section class="content-section">
                 <h2 class="content-title">Recursos</h2>
                 <p style="opacity: 0.8; max-width: 650px; margin-bottom: 3rem; font-size: 1.15rem;">Herramientas, mockups y assets creados en nuestro estudio, compartidos para la comunidad creativa.</p>
+                <!-- ⬇️ INSTRUCCIÓN: Coloca aquí tu URL o archivo directo (ej: "recurso1.jpg" o enlace de GitHub) dentro de los atributos src="..." ⬇️ -->
                 <div class="grid-layout">
                     <div class="card" style="cursor: default;">
                         <div class="gif-preview">
@@ -1521,6 +1572,7 @@
         <div id="codigo-abierto" class="page">
             <section class="content-section">
                 <h2 class="content-title">Generadores</h2>
+                <!-- ⬇️ INSTRUCCIÓN: Coloca aquí tu URL o archivo de VIDEO/IMAGEN directo (ej: "video1.mp4" o enlace de GitHub) dentro de los atributos src="..." ⬇️ -->
                 <div class="grid-layout">
                     <div class="card" style="cursor: default;">
                         <div class="gif-preview"><span class="brand-placeholder" style="color:var(--text-color); font-weight:700;">&lt;Zeqel UI /&gt;</span></div>
@@ -1850,12 +1902,6 @@
 
     <footer>
         <div class="footer-content">
-            <div class="footer-brand">
-                <div class="footer-logo-wrapper">
-                    <img src="https://raw.githubusercontent.com/eamxat/Imagenes-Zeqel/a7043297121f9d66c3d701d43d9fedd293209969/Zeqel%20Texto%20negro.svg" alt="Zeqel Texto" class="logo-black">
-                    <img src="https://raw.githubusercontent.com/eamxat/Imagenes-Zeqel/a7043297121f9d66c3d701d43d9fedd293209969/Zeqel%20Texto%20negro.svg" alt="Zeqel Texto Color" class="logo-color">
-                </div>
-            </div>
             <div class="footer-info">
                 <div class="footer-left">
                     <div class="copyright">
@@ -2176,7 +2222,7 @@
             revealElements.forEach(el => revealObserver.observe(el));
 
             const navLinks = document.querySelectorAll('.nav-links a, .legal-links a');
-            const logo = document.querySelector('.logo-container');
+            const logo = document.querySelector('.main-logo-wrapper');
             const pages = document.querySelectorAll('.page');
             const copyButtons = document.querySelectorAll('.copy-btn');
             const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
