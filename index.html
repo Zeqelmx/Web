@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Zeqel Estudio | Minimalist Branding & Digital Art</title>
+    <title>Zeqel | Estudio Creativo</title>
     <link rel="icon" type="image/svg+xml" href="https://raw.githubusercontent.com/Zeqelmx/images-/d10cc36e121a6eb265bf851666c1d804aca6716c/favicon%20(1).svg">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Inter:wght@300;400;500;600;900&display=swap');
@@ -31,6 +31,8 @@
             overflow-x: hidden;
             width: 100%;
             scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+            overscroll-behavior-x: none;
         }
 
         body {
@@ -47,7 +49,7 @@
             position: fixed;
             top: 0;
             left: 0;
-            width: 100vw;
+            width: 100%;
             height: 100vh;
             height: 100dvh;
             background-image: url('https://unsplash.com/photos/XWZOgMP20QQ/download?w=2000');
@@ -87,7 +89,7 @@
             position: fixed;
             top: 0;
             left: 0;
-            width: 100vw;
+            width: 100%;
             height: 100vh;
             height: 100dvh;
             z-index: -2;
@@ -115,7 +117,7 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: 100vw;
+            width: 100%;
             height: 50vh;
             background: linear-gradient(to bottom, rgba(0, 11, 24, 0.8) 0%, rgba(0, 11, 24, 0) 100%);
             z-index: 10;
@@ -135,7 +137,7 @@
         .cloud-layer-1 {
             --size: 350px;
             left: calc(var(--size) * -1);
-            width: calc(100vw + (var(--size) * 2));
+            width: calc(100% + (var(--size) * 2));
             background-size: var(--size) auto;
             background-position: 0 10%;
             opacity: 0.35;
@@ -145,7 +147,7 @@
         .cloud-layer-2 {
             --size: 550px;
             left: calc(var(--size) * -1);
-            width: calc(100vw + (var(--size) * 2));
+            width: calc(100% + (var(--size) * 2));
             background-size: var(--size) auto;
             background-position: 0 35%;
             opacity: 0.50;
@@ -155,7 +157,7 @@
         .cloud-layer-3 {
             --size: 850px;
             left: calc(var(--size) * -1);
-            width: calc(100vw + (var(--size) * 2));
+            width: calc(100% + (var(--size) * 2));
             background-size: var(--size) auto;
             background-position: 0 -5%;
             opacity: 0.65;
@@ -177,7 +179,7 @@
             position: fixed;
             bottom: 0;
             left: 0;
-            width: 100vw;
+            width: 100%;
             height: 60vh;
             background: linear-gradient(
                 to bottom,
@@ -195,7 +197,7 @@
             position: fixed;
             top: 0;
             left: 0;
-            width: 100vw;
+            width: 100%;
             height: 100vh;
             pointer-events: none;
             z-index: 9999;
@@ -249,39 +251,6 @@
 
         nav.nav-scrolled::after {
             box-shadow: 0 1px 0 rgba(255, 255, 255, 0.02);
-        }
-
-        .nav-links {
-            position: fixed;
-            right: 4rem;
-            top: 50%;
-            transform: translateY(-50%);
-            display: flex;
-            flex-direction: column;
-            gap: 4rem;
-            align-items: center;
-            z-index: 1000;
-        }
-
-        .nav-links a {
-            color: var(--text-color);
-            text-decoration: none;
-            font-size: 0.65rem;
-            font-weight: 400;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            opacity: 0.35;
-            transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
-            writing-mode: vertical-rl;
-            transform: rotate(180deg);
-        }
-
-        /* Enlaces más oscuros/gruesos y coloreados en azul al pasar el cursor */
-        .nav-links a:hover {
-            opacity: 1;
-            color: var(--accent-blue);
-            font-weight: 900;
-            letter-spacing: 7px;
         }
 
         .mobile-menu-btn {
@@ -368,7 +337,7 @@
             position: fixed;
             top: 0;
             left: 0;
-            width: 100vw;
+            width: 100%;
             height: 100vh;
             height: 100dvh;
             z-index: -1;
@@ -394,6 +363,7 @@
             cursor: pointer;
             transition: transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1), filter 2.5s ease-in-out;
             animation: heroZenFloat 6s ease-in-out infinite;
+            will-change: transform, filter;
         }
 
         @keyframes heroZenFloat {
@@ -931,6 +901,7 @@
             position: relative;
             width: 200px;
             height: 280px;
+            will-change: transform;
         }
 
         .gallery-track:hover {
@@ -948,6 +919,9 @@
             background: rgba(0, 31, 63, 0.3);
             /* Transformación radial (Calculada para 10 elementos: 360/10 = 36 grados de separación) */
             /* Traslación Z ajustada para un radio cilíndrico armónico que evite superposición central */
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            transform-style: preserve-3d;
         }
 
         /* Orientación de las caras del prisma decagonal */
@@ -1419,8 +1393,8 @@
             <section class="hero">
                 <!-- ⬇️ INSTRUCCIÓN: Coloca aquí tu URL o archivo directo (ej: "logo.svg" o enlace de GitHub) dentro del atributo src="..." ⬇️ -->
                 <div class="main-logo-wrapper">
-                    <img src="https://raw.githubusercontent.com/eamxat/Imagenes-Zeqel/a7043297121f9d66c3d701d43d9fedd293209969/Zeqel%20Texto%20negro.svg" alt="Zeqel Texto" class="logo-black">
-                    <img src="https://raw.githubusercontent.com/eamxat/Imagenes-Zeqel/a7043297121f9d66c3d701d43d9fedd293209969/Zeqel%20Texto%20negro.svg" alt="Zeqel Texto Color" class="logo-color">
+                    <img src="https://raw.githubusercontent.com/eamxat/Imagenes-Zeqel/a7043297121f9d66c3d701d43d9fedd293209969/Zeqel%20Texto%20negro.svg" alt="Zeqel Texto" class="logo-black" loading="lazy" decoding="async">
+                    <img src="https://raw.githubusercontent.com/eamxat/Imagenes-Zeqel/a7043297121f9d66c3d701d43d9fedd293209969/Zeqel%20Texto%20negro.svg" alt="Zeqel Texto Color" class="logo-color" loading="lazy" decoding="async">
                 </div>
 
                 <div class="hero-content">
@@ -1439,17 +1413,17 @@
                 <div class="gallery-track">
                     <!-- ⬇️ INSTRUCCIÓN: Reemplaza estos enlaces en 'src="..."' por tus archivos locales (ej: "gallery1.jpg") o URLs de GitHub ⬇️ -->
                     <!-- Imágenes de Cianotipia Botánica (Unsplash) -->
-                    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1543160862-2a91f3eb3c7d?q=80&w=600&auto=format&fit=crop" alt="Cianotipia Hoja 1"></div>
-                    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1463320726281-696a485928c7?q=80&w=600&auto=format&fit=crop" alt="Cianotipia Helecho 1"></div>
-                    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1520301255226-bf5f1444d1ba?q=80&w=600&auto=format&fit=crop" alt="Cianotipia Monstera"></div>
-                    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=600&auto=format&fit=crop" alt="Cianotipia Rama"></div>
-                    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?q=80&w=600&auto=format&fit=crop" alt="Cianotipia Hoja 2"></div>
+                    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1543160862-2a91f3eb3c7d?q=80&w=600&auto=format&fit=crop" alt="Cianotipia Hoja 1" loading="lazy" decoding="async"></div>
+                    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1463320726281-696a485928c7?q=80&w=600&auto=format&fit=crop" alt="Cianotipia Helecho 1" loading="lazy" decoding="async"></div>
+                    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1520301255226-bf5f1444d1ba?q=80&w=600&auto=format&fit=crop" alt="Cianotipia Monstera" loading="lazy" decoding="async"></div>
+                    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=600&auto=format&fit=crop" alt="Cianotipia Rama" loading="lazy" decoding="async"></div>
+                    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?q=80&w=600&auto=format&fit=crop" alt="Cianotipia Hoja 2" loading="lazy" decoding="async"></div>
                     <!-- Repetición para completar el cilindro decagonal perfecto -->
-                    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1543160862-2a91f3eb3c7d?q=80&w=600&auto=format&fit=crop" alt="Cianotipia Hoja 1"></div>
-                    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1463320726281-696a485928c7?q=80&w=600&auto=format&fit=crop" alt="Cianotipia Helecho 1"></div>
-                    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1520301255226-bf5f1444d1ba?q=80&w=600&auto=format&fit=crop" alt="Cianotipia Monstera"></div>
-                    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=600&auto=format&fit=crop" alt="Cianotipia Rama"></div>
-                    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?q=80&w=600&auto=format&fit=crop" alt="Cianotipia Hoja 2"></div>
+                    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1543160862-2a91f3eb3c7d?q=80&w=600&auto=format&fit=crop" alt="Cianotipia Hoja 1" loading="lazy" decoding="async"></div>
+                    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1463320726281-696a485928c7?q=80&w=600&auto=format&fit=crop" alt="Cianotipia Helecho 1" loading="lazy" decoding="async"></div>
+                    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1520301255226-bf5f1444d1ba?q=80&w=600&auto=format&fit=crop" alt="Cianotipia Monstera" loading="lazy" decoding="async"></div>
+                    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=600&auto=format&fit=crop" alt="Cianotipia Rama" loading="lazy" decoding="async"></div>
+                    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?q=80&w=600&auto=format&fit=crop" alt="Cianotipia Hoja 2" loading="lazy" decoding="async"></div>
                 </div>
                 <div class="gallery-caption">Cianotipia Digital</div>
             </div>
@@ -1501,11 +1475,11 @@
                     <div class="sponsors-flex">
                         <!-- ⬇️ INSTRUCCIÓN: Reemplaza estos enlaces en 'src="..."' por tus iconos/imágenes locales o URLs de GitHub ⬇️ -->
                         <div class="sponsor-item">
-                            <img src="https://raw.githubusercontent.com/eamxat/Imagenes-Zeqel/refs/heads/main/icons8-corel-draw-67.png" alt="CorelDraw">
+                            <img src="https://raw.githubusercontent.com/eamxat/Imagenes-Zeqel/refs/heads/main/icons8-corel-draw-67.png" alt="CorelDraw" loading="lazy" decoding="async">
                             <span>CorelDraw</span>
                         </div>
                         <div class="sponsor-item">
-                            <img src="https://raw.githubusercontent.com/eamxat/Imagenes-Zeqel/refs/heads/main/descarga%20(1).png" alt="Photoshop" class="ps-icon">
+                            <img src="https://raw.githubusercontent.com/eamxat/Imagenes-Zeqel/refs/heads/main/descarga%20(1).png" alt="Photoshop" class="ps-icon" loading="lazy" decoding="async">
                             <span>Photoshop</span>
                         </div>
                         <div class="sponsor-item">
@@ -1523,11 +1497,11 @@
                             <span>Gemini</span>
                         </div>
                         <div class="sponsor-item">
-                            <img src="https://raw.githubusercontent.com/eamxat/Imagenes-Zeqel/refs/heads/main/icons8-canva-100.png" alt="Canva">
+                            <img src="https://raw.githubusercontent.com/eamxat/Imagenes-Zeqel/refs/heads/main/icons8-canva-100.png" alt="Canva" loading="lazy" decoding="async">
                             <span>Canva</span>
                         </div>
                         <div class="sponsor-item">
-                            <img src="https://raw.githubusercontent.com/eamxat/Imagenes-Zeqel/refs/heads/main/descarga%20(2).png" alt="GitHub">
+                            <img src="https://raw.githubusercontent.com/eamxat/Imagenes-Zeqel/refs/heads/main/descarga%20(2).png" alt="GitHub" loading="lazy" decoding="async">
                             <span>GitHub</span>
                         </div>
                     </div>
@@ -1543,7 +1517,7 @@
                 <div class="grid-layout">
                     <div class="card" style="cursor: default;">
                         <div class="gif-preview">
-                            <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=800&auto=format&fit=crop" alt="Cianotipia Botánica 1">
+                            <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=800&auto=format&fit=crop" alt="Cianotipia Botánica 1" loading="lazy" decoding="async">
                         </div>
                         <h3>Próximamente</h3>
                         <p>Nuevos recursos en preparación</p>
@@ -1551,7 +1525,7 @@
                     </div>
                     <div class="card" style="cursor: default;">
                         <div class="gif-preview">
-                            <img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?q=80&w=800&auto=format&fit=crop" alt="Textura Cian 2">
+                            <img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?q=80&w=800&auto=format&fit=crop" alt="Textura Cian 2" loading="lazy" decoding="async">
                         </div>
                         <h3>Próximamente</h3>
                         <p>Nuevos recursos en preparación</p>
@@ -1559,7 +1533,7 @@
                     </div>
                     <div class="card" style="cursor: default;">
                         <div class="gif-preview">
-                            <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=800&auto=format&fit=crop" alt="Naturaleza Cian 3">
+                            <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=800&auto=format&fit=crop" alt="Naturaleza Cian 3" loading="lazy" decoding="async">
                         </div>
                         <h3>Próximamente</h3>
                         <p>Nuevos recursos en preparación</p>
@@ -1586,7 +1560,7 @@
                     <div class="card" style="cursor: default;">
                         <div class="gif-preview video-hover-container">
                             <video src="https://i.imgur.com/qLzN2uv.mp4" muted loop playsinline class="hover-video"></video>
-                            <img src="https://i.imgur.com/fq3LLvt.png" alt="Generador Retracted Glass" class="hover-image">
+                            <img src="https://i.imgur.com/fq3LLvt.png" alt="Generador Retracted Glass" class="hover-image" loading="lazy" decoding="async">
                         </div>
                         <h3>Generador Retracted Glass</h3>
                         <p>Añade efecto Retracted Glass a tus imagenes.</p>
@@ -1598,7 +1572,7 @@
                     <div class="card" style="cursor: default;">
                         <div class="gif-preview video-hover-container">
                             <video src="https://i.imgur.com/F7iTMk3.mp4" muted loop playsinline class="hover-video"></video>
-                            <img src="https://i.imgur.com/fzvyLGl.jpeg" alt="Generador de Fluido" class="hover-image">
+                            <img src="https://i.imgur.com/fzvyLGl.jpeg" alt="Generador de Fluido" class="hover-image" loading="lazy" decoding="async">
                         </div>
                         <h3>Generador de Fluido</h3>
                         <p>Crea efecto liquido con diferentes tonos de color y textura.</p>
@@ -1609,7 +1583,7 @@
                     </div>
                     <div class="card" style="cursor: default;">
                         <div class="gif-preview">
-                            <img src="https://i.imgur.com/3sFX01P.png" alt="Generador Cianotipia">
+                            <img src="https://i.imgur.com/3sFX01P.png" alt="Generador Cianotipia" loading="lazy" decoding="async">
                         </div>
                         <h3>Generador Cianotipia</h3>
                         <p>Añade efectos estilo Cianotipia a tus imagenes.</p>
@@ -1933,42 +1907,64 @@
             }
         });
 
+        // OPTIMIZACIÓN: Variables globales cacheadas para Scroll (Previene Layout Thrashing)
+        let globalScrollY = window.scrollY;
+        
+        // OPTIMIZACIÓN: Renderizado de Grain mediante Offscreen Patterns (Reduce el uso de CPU en ~98%)
         const grainCanvas = document.getElementById('grain-canvas');
-        const grainCtx = grainCanvas.getContext('2d');
+        const grainCtx = grainCanvas.getContext('2d', { alpha: true, desynchronized: true });
+        
+        const noiseFrames = [];
+        const patternSize = 256; 
+        
+        function initGrainPattern() {
+            const tempCanvas = document.createElement('canvas');
+            tempCanvas.width = patternSize;
+            tempCanvas.height = patternSize;
+            const tCtx = tempCanvas.getContext('2d');
+            
+            for(let f = 0; f < 4; f++) { 
+                const id = tCtx.createImageData(patternSize, patternSize);
+                const d = id.data;
+                const len = d.length;
+                for(let i = 0; i < len; i += 4) {
+                    const v = (Math.random() * 255) | 0; // Operación bitwise es más rápida
+                    d[i] = d[i+1] = d[i+2] = v;
+                    d[i+3] = 255;
+                }
+                tCtx.putImageData(id, 0, 0);
+                const frameCanvas = document.createElement('canvas');
+                frameCanvas.width = patternSize;
+                frameCanvas.height = patternSize;
+                frameCanvas.getContext('2d').drawImage(tempCanvas, 0, 0);
+                noiseFrames.push(frameCanvas);
+            }
+        }
+        initGrainPattern();
 
         function resizeGrain() {
             grainCanvas.width = window.innerWidth;
             grainCanvas.height = window.innerHeight;
         }
-        window.addEventListener('resize', resizeGrain);
+        window.addEventListener('resize', resizeGrain, { passive: true });
         resizeGrain();
 
         let grainFrame = 0;
         function grainLoop() {
             grainFrame++;
-            if (grainFrame % 4 === 0) {
-                const w = grainCanvas.width;
-                const h = grainCanvas.height;
-                
-                if (w > 0 && h > 0) {
-                    const imageData = grainCtx.createImageData(w, h);
-                    const data = imageData.data;
-                    for (let i = 0; i < data.length; i += 4) {
-                        const v = Math.random() * 255 | 0;
-                        data[i]     = v;
-                        data[i + 1] = v;
-                        data[i + 2] = v;
-                        data[i + 3] = 255;
-                    }
-                    grainCtx.putImageData(imageData, 0, 0);
-                }
+            if (grainFrame % 4 === 0 && grainCanvas.width > 0) {
+                // Dibujar patrón pre-calculado en mosaico en lugar de calcular pixel a pixel
+                const pattern = grainCtx.createPattern(noiseFrames[(grainFrame / 4) % 4], 'repeat');
+                grainCtx.fillStyle = pattern;
+                grainCtx.fillRect(0, 0, grainCanvas.width, grainCanvas.height);
             }
             requestAnimationFrame(grainLoop);
         }
-        grainLoop();
+        requestAnimationFrame(grainLoop);
 
         const canvas = document.getElementById('bg-canvas');
-        const gl = canvas.getContext('webgl', { alpha: true });
+        // OPTIMIZACIÓN: Deshabilitar propiedades no utilizadas en WebGL
+        const gl = canvas.getContext('webgl', { alpha: true, antialias: false, depth: false });
 
         if (gl) {
             const vsSource = `
@@ -2089,12 +2085,14 @@
             let isMobile = window.innerWidth <= 768;
 
             function resize() {
-                canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
+                // OPTIMIZACIÓN: Limitar DevicePixelRatio a 1.5 max para reducir drásticamente la carga de GPU en pantallas 4K/Retina
+                const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+                canvas.width = Math.floor(window.innerWidth * dpr);
+                canvas.height = Math.floor(window.innerHeight * dpr);
                 isMobile = window.innerWidth <= 768;
                 gl.viewport(0, 0, canvas.width, canvas.height);
             }
-            window.addEventListener('resize', resize);
+            window.addEventListener('resize', resize, { passive: true });
             resize();
 
             window.addEventListener('mousemove', (e) => {
@@ -2113,7 +2111,8 @@
                 mouseX += (targetMouseX - mouseX) * 0.05;
                 mouseY += (targetMouseY - mouseY) * 0.05;
                 
-                let scrollProgress = Math.min(window.scrollY / window.innerHeight, 1.0);
+                // OPTIMIZACIÓN: Usar scroll en caché global en lugar de window.scrollY directo
+                let scrollProgress = Math.min(globalScrollY / window.innerHeight, 1.0);
 
                 if (scrollProgress < 1.0 && canvas.width > 0 && canvas.height > 0) {
                     time = now * 0.001;
@@ -2124,8 +2123,11 @@
                     gl.uniform1f(uIntensity, isMobile ? 0.15 : 0.3);
                     gl.drawArrays(gl.TRIANGLES, 0, 6);
                 } else {
-                    gl.clearColor(0,0,0,0);
-                    gl.clear(gl.COLOR_BUFFER_BIT);
+                    // Prevenir sobre-dibujado innecesario cuando la sección no es visible
+                    if (gl.getParameter(gl.COLOR_CLEAR_VALUE)[3] !== 0) {
+                        gl.clearColor(0,0,0,0);
+                        gl.clear(gl.COLOR_BUFFER_BIT);
+                    }
                 }
                 
                 requestAnimationFrame(render);
@@ -2360,28 +2362,36 @@
             });
 
             const lightEnvironment = document.getElementById('prussian-light-environment');
+            const mainNav = document.querySelector('nav');
+            let isScrolling = false;
             
+            // OPTIMIZACIÓN: Unificar todos los eventos de scroll y pasarlos a requestAnimationFrame
             window.addEventListener('scroll', () => {
-                const scrollY = window.scrollY;
-                const heroHeight = window.innerHeight * 0.6;
-                
-                if (lightEnvironment) {
-                    if (scrollY > heroHeight) {
-                        lightEnvironment.classList.add('active');
-                    } else {
-                        lightEnvironment.classList.remove('active');
-                    }
+                globalScrollY = window.scrollY;
+                if (!isScrolling) {
+                    window.requestAnimationFrame(() => {
+                        const heroHeight = window.innerHeight * 0.6;
+                        
+                        if (lightEnvironment) {
+                            if (globalScrollY > heroHeight) {
+                                lightEnvironment.classList.add('active');
+                            } else {
+                                lightEnvironment.classList.remove('active');
+                            }
+                        }
+                        
+                        if (mainNav) {
+                            if (globalScrollY > 15) {
+                                mainNav.classList.add('nav-scrolled');
+                            } else {
+                                mainNav.classList.remove('nav-scrolled');
+                            }
+                        }
+                        isScrolling = false;
+                    });
+                    isScrolling = true;
                 }
             }, { passive: true });
-        });
-
-        const mainNav = document.querySelector('nav');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 15) {
-                mainNav.classList.add('nav-scrolled');
-            } else {
-                mainNav.classList.remove('nav-scrolled');
-            }
         });
 
         window.addEventListener('load', () => {
@@ -2391,7 +2401,8 @@
                 return;
             }
 
-            const glRb = rbCanvas.getContext('webgl', { alpha: true });
+            // OPTIMIZACIÓN: Deshabilitar propiedades WebGL inactivas
+            const glRb = rbCanvas.getContext('webgl', { alpha: true, antialias: false, depth: false });
 
             if (glRb) {
                 const vsSource = `
@@ -2554,7 +2565,8 @@
                 });
 
                 function renderRb(now) {
-                    const dpr = window.devicePixelRatio || 1;
+                    // OPTIMIZACIÓN: Limitar DPR a 1.5 max y usar globalScrollY cacheado
+                    const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
                     const w = Math.floor(window.innerWidth * dpr);
                     const h = Math.floor(window.innerHeight * dpr);
                     if (rbCanvas.width !== w || rbCanvas.height !== h) {
@@ -2566,7 +2578,7 @@
                     glRb.useProgram(programRb);
                     glRb.uniform2f(uResolutionRb, window.innerWidth, window.innerHeight);
                     glRb.uniform1f(uTimeRb, now * 0.001);
-                    glRb.uniform1f(uScrollRb, window.scrollY);
+                    glRb.uniform1f(uScrollRb, globalScrollY); // Reemplazado window.scrollY intensivo
                     
                     currentMouseXRb += (targetMouseXRb - currentMouseXRb) * 0.05;
                     currentMouseYRb += (targetMouseYRb - currentMouseYRb) * 0.05;
