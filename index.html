@@ -203,6 +203,18 @@
             z-index: 9999;
             opacity: 0.08;
             mix-blend-mode: color-dodge; 
+            /* OPTIMIZACIÓN: Animación trasladada a CSS/Hardware */
+            background-repeat: repeat;
+            animation: grainHardwareAnim 0.4s steps(4) infinite;
+            will-change: background-position;
+        }
+
+        @keyframes grainHardwareAnim {
+            0% { background-position: 0% 0%; }
+            25% { background-position: 25% 75%; }
+            50% { background-position: 75% 25%; }
+            75% { background-position: 50% 50%; }
+            100% { background-position: 0% 0%; }
         }
 
         nav {
@@ -247,6 +259,10 @@
             backdrop-filter: blur(4px);
             -webkit-backdrop-filter: blur(4px);
             background: rgba(0, 11, 24, 0.3);
+            /* OPTIMIZACIÓN: Forzar capa GPU */
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            transform: translateZ(0);
         }
 
         nav.nav-scrolled::after {
@@ -515,10 +531,14 @@
             padding: 3rem 2.5rem;
             transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1), background 0.4s ease, border-color 0.4s ease;
             cursor: pointer;
+            /* OPTIMIZACIÓN: Forzar capa GPU para fluidez de scroll */
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            transform: translateZ(0);
         }
 
         .card:hover {
-            transform: translateY(-8px);
+            transform: translateY(-8px) translateZ(0);
             background: rgba(10, 77, 140, 0.15);
             border-color: rgba(94, 169, 255, 0.3);
         }
@@ -689,6 +709,10 @@
             cursor: pointer;
             position: relative;
             overflow: hidden;
+            /* OPTIMIZACIÓN: Forzar capa GPU para fluidez de scroll */
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            transform: translateZ(0);
         }
 
         .brand-card::before {
@@ -705,7 +729,7 @@
         }
 
         .brand-card:hover {
-            transform: translateY(-8px);
+            transform: translateY(-8px) translateZ(0);
             background: rgba(10, 77, 140, 0.2);
             border-color: rgba(94, 169, 255, 0.5);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
@@ -818,6 +842,10 @@
             -webkit-backdrop-filter: blur(8px);
             border: 1px solid var(--border-color);
             border-radius: 2px;
+            /* OPTIMIZACIÓN: Forzar capa GPU para fluidez de scroll */
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            transform: translateZ(0);
         }
 
         .legal-content .last-updated {
@@ -1098,10 +1126,12 @@
             overflow-y: auto;
             transform: translateX(100%);
             transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+            /* OPTIMIZACIÓN: Hardware acceleration para panel lateral */
+            will-change: transform;
         }
 
         .modal-overlay.active .modal-container {
-            transform: translateX(0);
+            transform: translateX(0) translateZ(0);
         }
 
         .modal-close {
@@ -1910,57 +1940,29 @@
         // OPTIMIZACIÓN: Variables globales cacheadas para Scroll (Previene Layout Thrashing)
         let globalScrollY = window.scrollY;
         
-        // OPTIMIZACIÓN: Renderizado de Grain mediante Offscreen Patterns (Reduce el uso de CPU en ~98%)
+        // OPTIMIZACIÓN: Generación única de Grain Textura (0% CPU Runtime)
         const grainCanvas = document.getElementById('grain-canvas');
-        const grainCtx = grainCanvas.getContext('2d', { alpha: true, desynchronized: true });
-        
-        const noiseFrames = [];
-        const patternSize = 256; 
-        
-        function initGrainPattern() {
+        function initHardwareGrain() {
             const tempCanvas = document.createElement('canvas');
+            const patternSize = 256; 
             tempCanvas.width = patternSize;
             tempCanvas.height = patternSize;
-            const tCtx = tempCanvas.getContext('2d');
+            const tCtx = tempCanvas.getContext('2d', { alpha: true });
             
-            for(let f = 0; f < 4; f++) { 
-                const id = tCtx.createImageData(patternSize, patternSize);
-                const d = id.data;
-                const len = d.length;
-                for(let i = 0; i < len; i += 4) {
-                    const v = (Math.random() * 255) | 0; // Operación bitwise es más rápida
-                    d[i] = d[i+1] = d[i+2] = v;
-                    d[i+3] = 255;
-                }
-                tCtx.putImageData(id, 0, 0);
-                const frameCanvas = document.createElement('canvas');
-                frameCanvas.width = patternSize;
-                frameCanvas.height = patternSize;
-                frameCanvas.getContext('2d').drawImage(tempCanvas, 0, 0);
-                noiseFrames.push(frameCanvas);
+            const id = tCtx.createImageData(patternSize, patternSize);
+            const d = id.data;
+            const len = d.length;
+            for(let i = 0; i < len; i += 4) {
+                const v = (Math.random() * 255) | 0;
+                d[i] = d[i+1] = d[i+2] = v;
+                d[i+3] = 255;
             }
+            tCtx.putImageData(id, 0, 0);
+            
+            // Convertir a imagen base64 para uso en CSS
+            grainCanvas.style.backgroundImage = `url(${tempCanvas.toDataURL('image/png')})`;
         }
-        initGrainPattern();
-
-        function resizeGrain() {
-            grainCanvas.width = window.innerWidth;
-            grainCanvas.height = window.innerHeight;
-        }
-        window.addEventListener('resize', resizeGrain, { passive: true });
-        resizeGrain();
-
-        let grainFrame = 0;
-        function grainLoop() {
-            grainFrame++;
-            if (grainFrame % 4 === 0 && grainCanvas.width > 0) {
-                // Dibujar patrón pre-calculado en mosaico en lugar de calcular pixel a pixel
-                const pattern = grainCtx.createPattern(noiseFrames[(grainFrame / 4) % 4], 'repeat');
-                grainCtx.fillStyle = pattern;
-                grainCtx.fillRect(0, 0, grainCanvas.width, grainCanvas.height);
-            }
-            requestAnimationFrame(grainLoop);
-        }
-        requestAnimationFrame(grainLoop);
+        initHardwareGrain();
 
         const canvas = document.getElementById('bg-canvas');
         // OPTIMIZACIÓN: Deshabilitar propiedades no utilizadas en WebGL
@@ -1975,7 +1977,8 @@
             `;
             
             const fsSource = `
-                precision highp float;
+                // OPTIMIZACIÓN: mediump incrementa radicalmente los FPS en móviles y PCs integradas
+                precision mediump float;
                 uniform vec2 u_resolution;
                 uniform float u_time;
                 uniform vec2 u_mouse;
@@ -2085,8 +2088,8 @@
             let isMobile = window.innerWidth <= 768;
 
             function resize() {
-                // OPTIMIZACIÓN: Limitar DevicePixelRatio a 1.5 max para reducir drásticamente la carga de GPU en pantallas 4K/Retina
-                const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+                // OPTIMIZACIÓN EXTREMA: Fijar DPR a 1.0 para WebGL (Fluidos abstractos no requieren retina y reduce 75% fragmentos)
+                const dpr = 1.0; 
                 canvas.width = Math.floor(window.innerWidth * dpr);
                 canvas.height = Math.floor(window.innerHeight * dpr);
                 isMobile = window.innerWidth <= 768;
@@ -2413,7 +2416,8 @@
                 `;
                 
                 const fsSource = `
-                    precision highp float;
+                    // OPTIMIZACIÓN: mediump incrementa radicalmente los FPS
+                    precision mediump float;
                     uniform vec2 u_resolution;
                     uniform float u_time;
                     uniform float u_scroll;
@@ -2565,8 +2569,14 @@
                 });
 
                 function renderRb(now) {
-                    // OPTIMIZACIÓN: Limitar DPR a 1.5 max y usar globalScrollY cacheado
-                    const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+                    // OPTIMIZACIÓN: Si estamos en el inicio, pausar completamente este shader para liberar la GPU
+                    if (globalScrollY < window.innerHeight * 0.5) {
+                        requestAnimationFrame(renderRb);
+                        return;
+                    }
+
+                    // OPTIMIZACIÓN EXTREMA: Fijar DPR a 1.0
+                    const dpr = 1.0;
                     const w = Math.floor(window.innerWidth * dpr);
                     const h = Math.floor(window.innerHeight * dpr);
                     if (rbCanvas.width !== w || rbCanvas.height !== h) {
