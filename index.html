@@ -1377,7 +1377,6 @@
     </style>
 </head>
 <body>
-
     <canvas id="grain-canvas"></canvas>
 
     <div id="clouds-container">
@@ -1620,6 +1619,17 @@
                         <div class="card-actions">
                             <button class="action-btn copy-btn" data-url="https://zeqelmx.github.io/Cianotipia/">Copiar Enlace</button>
                             <a href="https://zeqelmx.github.io/Cianotipia/" target="_blank" class="action-btn primary">Ver Proyecto</a>
+                        </div>
+                    </div>
+                    <div class="card" style="cursor: default;">
+                        <div class="gif-preview">
+                            <img src="https://i.imgur.com/m7QbYsM.jpeg" alt="Generador Geometrico 1" loading="lazy" decoding="async">
+                        </div>
+                        <h3>Generador Geometrico 1</h3>
+                        <p>Genera texturas geometricas y liquidas con màs de 4 colores a tu elecciòn.</p>
+                        <div class="card-actions">
+                            <button class="action-btn copy-btn" data-url="https://zeqelmx.github.io/GeneradorFormas/">Copiar Enlace</button>
+                            <a href="https://zeqelmx.github.io/GeneradorFormas/" target="_blank" class="action-btn primary">Ver Proyecto</a>
                         </div>
                     </div>
                 </div>
@@ -2328,7 +2338,7 @@
             const brandCards = document.querySelectorAll('.brand-card');
             brandCards.forEach(card => {
                 card.addEventListener('click', () => {
-                    if (true) return; // TEMPORALMENTE DESACTIVADO
+                    // SE ELIMINÓ: if (true) return; // TEMPORALMENTE DESACTIVADO para permitir la funcionalidad del modal
 
                     const projectKey = card.getAttribute('data-project');
                     const projectData = projectsDatabase[projectKey];
